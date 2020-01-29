@@ -9,6 +9,8 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Mojarra-2.4.0" />
+          <element id="library" level="project" name="eclipselink" />
+          <element id="library" level="project" name="com.mysql.jdbc_5.1.5" />
         </element>
       </element>
     </root>

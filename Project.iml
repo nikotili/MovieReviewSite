@@ -11,6 +11,18 @@
         </webroots>
       </configuration>
     </facet>
+    <facet type="jpa" name="JPA">
+      <configuration>
+        <setting name="validation-enabled" value="true" />
+        <setting name="provider-name" value="EclipseLink" />
+        <datasource-mapping>
+          <factory-entry name="demoPersistenceUnit" value="9312de63-1e73-4471-be3c-f9dfb7b651a3" />
+        </datasource-mapping>
+        <naming-strategy-map />
+        <deploymentDescriptor name="orm.xml" url="file://$MODULE_DIR$/src/META-INF/orm.xml" />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -21,5 +33,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.50" level="application_server_libraries" />
     <orderEntry type="library" name="Mojarra-2.4.0" level="project" />
+    <orderEntry type="library" name="JPA 1.0-JPA 1.0" level="project" />
+    <orderEntry type="library" name="eclipselink" level="project" />
+    <orderEntry type="library" name="com.mysql.jdbc_5.1.5" level="project" />
   </component>
 </module>
