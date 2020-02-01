@@ -11,6 +11,7 @@
           <element id="library" level="project" name="Mojarra-2.4.0" />
           <element id="library" level="project" name="eclipselink" />
           <element id="library" level="project" name="com.mysql.jdbc_5.1.5" />
+          <element id="library" level="project" name="JPA 2.0-JPA 2.0" />
         </element>
       </element>
     </root>

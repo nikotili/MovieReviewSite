@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="JPA 1.0-JPA 1.0">
+  <library name="JPA 2.0-JPA 2.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/javaee.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.persistence.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

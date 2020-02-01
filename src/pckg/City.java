@@ -1,11 +1,14 @@
 package pckg;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
+@NamedQueries({
+        @NamedQuery(name = "City.findAll", query = "SELECT c FROM City c"),
+        @NamedQuery(name = "City.findById", query = "SELECT c FROM City c WHERE c.id = :id"),
+        @NamedQuery(name = "City.findByName", query = "SELECT c FROM City c WHERE c.name = :name"),
+        @NamedQuery(name = "City.findByDistrict", query = "SELECT c FROM City c WHERE c.district = :district"),
+        @NamedQuery(name = "City.findByPopulation", query = "SELECT c FROM City c WHERE c.population = :population")})
 @Entity
 public class City {
     private int id;
