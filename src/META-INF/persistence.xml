@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
-    <persistence-unit name="demoPersistenceUnit">
+    <persistence-unit name="movieReview-PU">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>pckg.City</class>
-        <class>pckg.Countrylanguage</class>
+        <mapping-file>META-INF/orm.xml</mapping-file>
+        <class>al.unyt.edu.advjava.fall2019.project.db_entities.ActionLog</class>
+        <class>al.unyt.edu.advjava.fall2019.project.db_entities.Action</class>
+        <class>al.unyt.edu.advjava.fall2019.project.db_entities.Director</class>
+        <class>al.unyt.edu.advjava.fall2019.project.db_entities.Genre</class>
+        <class>al.unyt.edu.advjava.fall2019.project.db_entities.MovieGoer</class>
+        <class>al.unyt.edu.advjava.fall2019.project.db_entities.Movie</class>
+        <class>al.unyt.edu.advjava.fall2019.project.db_entities.MoviesDirectorsRelation</class>
+        <class>al.unyt.edu.advjava.fall2019.project.db_entities.MoviesGenresRelation</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/world?characterEncoding=latin1"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/movie_review?characterEncoding=latin1"/>
             <property name="javax.persistence.jdbc.user" value="jUser"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.password" value="password"/>

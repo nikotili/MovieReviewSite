@@ -16,9 +16,13 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="EclipseLink" />
         <datasource-mapping>
+          <factory-entry name="Entities" />
           <factory-entry name="demoPersistenceUnit" />
+          <factory-entry name="movieReview-PU" value="7f228024-5265-4482-8ab8-1fab0116c7ee" />
         </datasource-mapping>
-        <naming-strategy-map />
+        <naming-strategy-map>
+          <unit-entry name="movieReview-PU" />
+        </naming-strategy-map>
         <deploymentDescriptor name="orm.xml" url="file://$MODULE_DIR$/src/META-INF/orm.xml" />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
       </configuration>

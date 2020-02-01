@@ -2,4 +2,107 @@
 <entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
         version="2.0">
 
+    <entity class="al.unyt.edu.advjava.fall2019.project.db_entities.ActionLog">
+        <table name="action_logs" schema="movie_review" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="actionValue">
+                <column name="action_value" nullable="false"/>
+            </basic>
+            <basic name="timeStamp">
+                <column name="time_stamp" precision="-1"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="al.unyt.edu.advjava.fall2019.project.db_entities.Action">
+        <table name="actions" schema="movie_review" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="code">
+                <column name="code" length="15"/>
+            </basic>
+            <basic name="description">
+                <column name="description" nullable="false" length="50"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="al.unyt.edu.advjava.fall2019.project.db_entities.Director">
+        <table name="directors" schema="movie_review" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="name">
+                <column name="name" length="30"/>
+            </basic>
+            <basic name="surname">
+                <column name="surname" length="30"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="al.unyt.edu.advjava.fall2019.project.db_entities.Genre">
+        <table name="genres" schema="movie_review" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="name">
+                <column name="name" length="20"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="al.unyt.edu.advjava.fall2019.project.db_entities.MovieGoer">
+        <table name="movie_goers" schema="movie_review" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="name">
+                <column name="name" length="30"/>
+            </basic>
+            <basic name="surname">
+                <column name="surname" length="30"/>
+            </basic>
+            <basic name="email">
+                <column name="email" length="50"/>
+            </basic>
+            <basic name="password">
+                <column name="password" length="30"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="al.unyt.edu.advjava.fall2019.project.db_entities.Movie">
+        <table name="movies" schema="movie_review" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="name">
+                <column name="name" length="30"/>
+            </basic>
+            <basic name="description">
+                <column name="description" length="400"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="al.unyt.edu.advjava.fall2019.project.db_entities.MoviesDirectorsRelation">
+        <table name="movies_directors_relations" schema="movie_review" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+        </attributes>
+    </entity>
+    <entity class="al.unyt.edu.advjava.fall2019.project.db_entities.MoviesGenresRelation">
+        <table name="movies_genres_relations" schema="movie_review" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+        </attributes>
+    </entity>
 </entity-mappings>
