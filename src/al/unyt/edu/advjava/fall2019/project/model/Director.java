@@ -1,17 +1,15 @@
-package al.unyt.edu.advjava.fall2019.project.db_entities;
+package al.unyt.edu.advjava.fall2019.project.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
-@NamedQueries({
-        @NamedQuery(name = "Genre.findAll", query = "SELECT g FROM Genre g")
-})
 @Entity
-@Table(name = "genres", schema = "movie_review", catalog = "")
-public class Genre {
+@Table(name = "directors", schema = "movie_review")
+public class Director {
     private int id;
     private String name;
+    private String surname;
     private Set<Movie> movies;
 
     @Id
@@ -25,7 +23,7 @@ public class Genre {
     }
 
     @Basic
-    @Column(name = "name", nullable = false, length = 20)
+    @Column(name = "name", nullable = false, length = 30)
     public String getName() {
         return name;
     }
@@ -34,7 +32,17 @@ public class Genre {
         this.name = name;
     }
 
-    @ManyToMany(mappedBy = "genres")
+    @Basic
+    @Column(name = "surname", nullable = false, length = 30)
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    @ManyToMany(mappedBy = "directors")
     public Set<Movie> getMovies() {
         return movies;
     }
@@ -47,13 +55,14 @@ public class Genre {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Genre genre = (Genre) o;
-        return id == genre.id &&
-                Objects.equals(name, genre.name);
+        Director director = (Director) o;
+        return id == director.id &&
+                Objects.equals(name, director.name) &&
+                Objects.equals(surname, director.surname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, name, surname);
     }
 }

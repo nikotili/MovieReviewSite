@@ -1,4 +1,4 @@
-package al.unyt.edu.advjava.fall2019.project.db_entities;
+package al.unyt.edu.advjava.fall2019.project.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

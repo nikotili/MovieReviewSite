@@ -1,26 +1,15 @@
-package al.unyt.edu.advjava.fall2019.project.db_entities;
+package al.unyt.edu.advjava.fall2019.project.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "movie_goers", schema = "movie_review", catalog = "")
+@Table(name = "movie_goers", schema = "movie_review")
 public class MovieGoer {
-    private int id;
     private String name;
     private String surname;
     private String email;
     private String password;
-
-    @Id
-    @Column(name = "id", nullable = false)
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "name", nullable = false, length = 30)
@@ -42,7 +31,7 @@ public class MovieGoer {
         this.surname = surname;
     }
 
-    @Basic
+    @Id
     @Column(name = "email", nullable = false, length = 50)
     public String getEmail() {
         return email;
@@ -67,8 +56,7 @@ public class MovieGoer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MovieGoer movieGoer = (MovieGoer) o;
-        return id == movieGoer.id &&
-                Objects.equals(name, movieGoer.name) &&
+        return Objects.equals(name, movieGoer.name) &&
                 Objects.equals(surname, movieGoer.surname) &&
                 Objects.equals(email, movieGoer.email) &&
                 Objects.equals(password, movieGoer.password);
@@ -76,6 +64,6 @@ public class MovieGoer {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, email, password);
+        return Objects.hash(name, surname, email, password);
     }
 }

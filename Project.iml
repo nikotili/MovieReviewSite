@@ -16,7 +16,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="EclipseLink" />
         <datasource-mapping>
-          <factory-entry name="Entities" />
+          <factory-entry name="Entities" value="7f228024-5265-4482-8ab8-1fab0116c7ee" />
           <factory-entry name="demoPersistenceUnit" />
           <factory-entry name="movieReview-PU" value="7f228024-5265-4482-8ab8-1fab0116c7ee" />
         </datasource-mapping>
