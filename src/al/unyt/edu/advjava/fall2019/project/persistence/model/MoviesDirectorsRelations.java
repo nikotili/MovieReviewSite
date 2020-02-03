@@ -1,16 +1,17 @@
-package al.unyt.edu.advjava.fall2019.project.model;
+package al.unyt.edu.advjava.fall2019.project.persistence.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.*;
 import java.util.Objects;
 
-public class MoviesDirectorsRelationsPK implements Serializable {
+@Entity
+@Table(name = "movies_directors_relations", schema = "movie_review")
+@IdClass(MoviesDirectorsRelationsPK.class)
+public class MoviesDirectorsRelations {
     private int movieId;
     private int directorId;
 
-    @Column(name = "movie_id", nullable = false)
     @Id
+    @Column(name = "movie_id", nullable = false)
     public int getMovieId() {
         return movieId;
     }
@@ -19,8 +20,8 @@ public class MoviesDirectorsRelationsPK implements Serializable {
         this.movieId = movieId;
     }
 
-    @Column(name = "director_id", nullable = false)
     @Id
+    @Column(name = "director_id", nullable = false)
     public int getDirectorId() {
         return directorId;
     }
@@ -33,7 +34,7 @@ public class MoviesDirectorsRelationsPK implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MoviesDirectorsRelationsPK that = (MoviesDirectorsRelationsPK) o;
+        MoviesDirectorsRelations that = (MoviesDirectorsRelations) o;
         return movieId == that.movieId &&
                 directorId == that.directorId;
     }

@@ -1,6 +1,6 @@
-package al.unyt.edu.advjava.fall2019.project.dao.auth;
+package al.unyt.edu.advjava.fall2019.project.persistence.auth;
 
-public class AuthenticationManagerFactory {
+public final class AuthenticationManagerFactory {
     private static final AuthenticationManager AUTHENTICATION_MANAGER;
 
     static {
@@ -11,7 +11,7 @@ public class AuthenticationManagerFactory {
         throw new IllegalAccessException();
     }
 
-    public static AuthenticationManager getAuthenticationManager() {
+    public static AuthenticationManager getDefaultAuthenticationManager() {
         return AUTHENTICATION_MANAGER;
     }
 

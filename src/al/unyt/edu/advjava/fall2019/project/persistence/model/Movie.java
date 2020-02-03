@@ -1,4 +1,4 @@
-package al.unyt.edu.advjava.fall2019.project.model;
+package al.unyt.edu.advjava.fall2019.project.persistence.model;
 
 import javax.persistence.*;
 import java.sql.Date;

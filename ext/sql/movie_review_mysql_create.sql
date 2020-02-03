@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS movie_review;
+
 CREATE TABLE movies
 (
     id           INT          NOT NULL AUTO_INCREMENT,
@@ -65,3 +67,11 @@ ALTER TABLE action_logs
 
 ALTER TABLE action_logs
     ADD CONSTRAINT action_logs_fk2 FOREIGN KEY (action_code) REFERENCES actions (code);
+
+
+INSERT INTO actions
+    (code, description)
+VALUES ('ADD_MOVIE', 'Add new movie'),
+       ('ADD_RATING', 'Add rating'),
+       ('COMMENT_MOVIE', 'Comment movie'),
+       ('UPDATE_MOVIE', 'Update movie info');

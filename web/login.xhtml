@@ -25,7 +25,7 @@
                            required="true"
                            requiredMessage="Please enter your password">
             </h:inputSecret>
-            <h:commandButton value="Log In"/>
+            <h:commandButton value="Log In" action="#{loginBean.authenticate}"/>
         </h:panelGrid>
     </h:form>
 </f:view>

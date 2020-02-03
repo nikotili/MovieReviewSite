@@ -1,6 +1,6 @@
 package al.unyt.edu.advjava.fall2019.project.bean;
 
-import al.unyt.edu.advjava.fall2019.project.dao.auth.AuthenticationManagerFactory;
+import al.unyt.edu.advjava.fall2019.project.core.DefaultAppController;
 
 import javax.faces.bean.ManagedBean;
 
@@ -28,14 +28,15 @@ public class LoginBean {
 
     public String authenticate() {
         try {
-            AuthenticationManagerFactory
-                    .getAuthenticationManager()
-                    .tryAuth(email, password);
+            DefaultAppController
+                    .getInstance()
+                    .authenticate(email, password);
         }
         catch (SecurityException e) {
+            System.err.println(e.getMessage());
+
             return e.getMessage();
         }
-
         return null;
     }
 }
