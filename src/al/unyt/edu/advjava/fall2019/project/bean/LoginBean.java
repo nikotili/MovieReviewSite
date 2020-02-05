@@ -1,6 +1,7 @@
 package al.unyt.edu.advjava.fall2019.project.bean;
 
 import al.unyt.edu.advjava.fall2019.project.core.DefaultAppController;
+import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 
 import javax.faces.bean.ManagedBean;
 
@@ -28,7 +29,7 @@ public class LoginBean {
 
     public String authenticate() {
         try {
-            DefaultAppController
+            MovieGoer movieGoer = DefaultAppController
                     .getInstance()
                     .authenticate(email, password);
         }

@@ -2,6 +2,11 @@ package al.unyt.edu.advjava.fall2019.project.core;
 
 import al.unyt.edu.advjava.fall2019.project.core.interfaces.AppController;
 import al.unyt.edu.advjava.fall2019.project.persistence.auth.AuthenticationManagerFactory;
+import al.unyt.edu.advjava.fall2019.project.persistence.dao.DaoFactory;
+import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
+import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
+
+import java.util.List;
 
 public final class DefaultAppController implements AppController {
 
@@ -18,9 +23,14 @@ public final class DefaultAppController implements AppController {
     }
 
     @Override
-    public void authenticate(String email, String password) throws SecurityException {
-        AuthenticationManagerFactory
+    public MovieGoer authenticate(String email, String password) throws SecurityException {
+        return AuthenticationManagerFactory
                 .getDefaultAuthenticationManager()
                 .tryAuth(email, password);
+    }
+
+    @Override
+    public List<Movie> getAllMovies() {
+        return DaoFactory.getMovieDao().getAll();
     }
 }

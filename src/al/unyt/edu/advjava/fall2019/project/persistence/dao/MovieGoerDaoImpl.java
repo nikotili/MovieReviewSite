@@ -1,6 +1,5 @@
 package al.unyt.edu.advjava.fall2019.project.persistence.dao;
 
-import al.unyt.edu.advjava.fall2019.project.persistence.PersistenceUtils;
 import al.unyt.edu.advjava.fall2019.project.persistence.dao.interfaces.MovieGoerDao;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 
@@ -20,7 +19,9 @@ final class MovieGoerDaoImpl implements MovieGoerDao {
 
     @Override
     public MovieGoer getByPK(String primaryKey) throws PersistenceException {
-        return PersistenceUtils.getDefaultEntityManager().find(MovieGoer.class, primaryKey);
+        return entityManagerSupplier
+                .get()
+                .find(MovieGoer.class, primaryKey);
     }
 
     @Override

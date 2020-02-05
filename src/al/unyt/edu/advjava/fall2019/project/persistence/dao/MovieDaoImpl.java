@@ -21,7 +21,10 @@ final class MovieDaoImpl implements MovieDao {
 
     @Override
     public List<Movie> getAll() throws PersistenceException {
-        return null;
+        return entityManagerSupplier
+                .get()
+                .createNamedQuery("Movie.findAll", Movie.class)
+                .getResultList();
     }
 
     @Override
