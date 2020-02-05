@@ -6,7 +6,7 @@ import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 final class DefaultAuthenticationManager implements AuthenticationManager {
 
     @Override
-    public void tryAuth(String email, String password) throws SecurityException {
+    public MovieGoer tryAuth(String email, String password) throws SecurityException {
         MovieGoer movieGoer = DaoFactory
                 .getMovieGoerDao()
                 .getByPK(email);
@@ -18,5 +18,6 @@ final class DefaultAuthenticationManager implements AuthenticationManager {
             throw new SecurityException("Wrong password!");
 
         System.out.println("Login OK!");
+        return movieGoer;
     }
 }
