@@ -1,6 +1,7 @@
 package al.unyt.edu.advjava.fall2019.project.bean;
 
 import al.unyt.edu.advjava.fall2019.project.core.DefaultAppController;
+import al.unyt.edu.advjava.fall2019.project.manager.SessionManager;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 
 import javax.faces.bean.ManagedBean;
@@ -32,12 +33,18 @@ public class LoginBean {
             MovieGoer movieGoer = DefaultAppController
                     .getInstance()
                     .authenticate(email, password);
+
+            SessionManager
+                    .getInstance()
+                    .createSession(movieGoer);
+
+            return BeanUtil.INDEX_URI;
+
         }
         catch (SecurityException e) {
             System.err.println(e.getMessage());
 
-            return e.getMessage();
+            return null;
         }
-        return null;
     }
 }

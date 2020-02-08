@@ -4,20 +4,16 @@
     <persistence-unit name="movieReview-PU">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <mapping-file>META-INF/orm.xml</mapping-file>
-        <class>al.unyt.edu.advjava.fall2019.project.persistence.model.ActionLog</class>
-        <class>al.unyt.edu.advjava.fall2019.project.persistence.model.Action</class>
-        <class>al.unyt.edu.advjava.fall2019.project.persistence.model.Director</class>
         <class>al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer</class>
         <class>al.unyt.edu.advjava.fall2019.project.persistence.model.Movie</class>
-        <class>al.unyt.edu.advjava.fall2019.project.persistence.model.MoviesDirectorsRelations</class>
-        <class>al.unyt.edu.advjava.fall2019.project.persistence.model.Ratings</class>
+        <class>al.unyt.edu.advjava.fall2019.project.persistence.model.Director</class>
+        <class>al.unyt.edu.advjava.fall2019.project.persistence.model.MoviesDirectorsRelation</class>
+        <class>al.unyt.edu.advjava.fall2019.project.persistence.model.Rating</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/movie_review?characterEncoding=latin1"/>
             <property name="javax.persistence.jdbc.user" value="jUser"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.password" value="password"/>
-            <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/movie_review"/>
-            <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
         </properties>
     </persistence-unit>
 </persistence>

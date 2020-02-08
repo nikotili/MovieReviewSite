@@ -62,6 +62,12 @@ public class MovieGoer {
                 Objects.equals(password, movieGoer.password);
     }
 
+    public String fullName() {
+        return getName() + " " + getSurname();
+    }
+
+
+
     @Override
     public int hashCode() {
         return Objects.hash(name, surname, email, password);

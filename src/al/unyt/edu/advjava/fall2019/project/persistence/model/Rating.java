@@ -5,7 +5,7 @@ import java.util.Objects;
 
 @Entity
 @IdClass(RatingsPK.class)
-public class Ratings {
+public class Rating {
     private String movieGoerEmail;
     private int movieId;
     private int rating;
@@ -55,11 +55,11 @@ public class Ratings {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Ratings ratings = (Ratings) o;
-        return movieId == ratings.movieId &&
-                rating == ratings.rating &&
-                Objects.equals(movieGoerEmail, ratings.movieGoerEmail) &&
-                Objects.equals(comment, ratings.comment);
+        Rating rating = (Rating) o;
+        return movieId == rating.movieId &&
+                this.rating == rating.rating &&
+                Objects.equals(movieGoerEmail, rating.movieGoerEmail) &&
+                Objects.equals(comment, rating.comment);
     }
 
     @Override

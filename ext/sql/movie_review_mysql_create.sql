@@ -35,7 +35,7 @@ CREATE TABLE movies_directors_relations
     PRIMARY KEY (movie_id, director_id)
 );
 
-CREATE TABLE ratings
+CREATE TABLE rating
 (
     movie_goer_email VARCHAR(50)  NOT NULL,
     movie_id         INT          NOT NULL,
@@ -52,8 +52,8 @@ ALTER TABLE movies_directors_relations
 ALTER TABLE movies_directors_relations
     ADD CONSTRAINT movies_directors_relations_fk1 FOREIGN KEY (director_id) REFERENCES directors (id);
 
-ALTER TABLE ratings
+ALTER TABLE rating
     ADD CONSTRAINT ratings_fk0 FOREIGN KEY (movie_goer_email) REFERENCES movie_goers (email);
 
-ALTER TABLE ratings
+ALTER TABLE rating
     ADD CONSTRAINT ratings_fk1 FOREIGN KEY (movie_id) REFERENCES movies (id);

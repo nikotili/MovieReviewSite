@@ -6,7 +6,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "movies_directors_relations", schema = "movie_review")
 @IdClass(MoviesDirectorsRelationsPK.class)
-public class MoviesDirectorsRelations {
+public class MoviesDirectorsRelation {
     private int movieId;
     private int directorId;
 
@@ -34,7 +34,7 @@ public class MoviesDirectorsRelations {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MoviesDirectorsRelations that = (MoviesDirectorsRelations) o;
+        MoviesDirectorsRelation that = (MoviesDirectorsRelation) o;
         return movieId == that.movieId &&
                 directorId == that.directorId;
     }
