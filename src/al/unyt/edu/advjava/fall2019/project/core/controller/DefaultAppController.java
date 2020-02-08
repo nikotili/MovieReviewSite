@@ -1,7 +1,6 @@
-package al.unyt.edu.advjava.fall2019.project.core;
+package al.unyt.edu.advjava.fall2019.project.core.controller;
 
-import al.unyt.edu.advjava.fall2019.project.core.interfaces.AppController;
-import al.unyt.edu.advjava.fall2019.project.persistence.auth.AuthenticationManagerFactory;
+import al.unyt.edu.advjava.fall2019.project.core.manager.auth.DefaultAuthenticationManager;
 import al.unyt.edu.advjava.fall2019.project.persistence.dao.DaoFactory;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
@@ -16,7 +15,7 @@ public final class DefaultAppController implements AppController {
         INSTANCE = new DefaultAppController();
     }
 
-    private DefaultAppController() { }
+    private DefaultAppController() {}
 
     public static DefaultAppController getInstance() {
         return INSTANCE;
@@ -24,8 +23,7 @@ public final class DefaultAppController implements AppController {
 
     @Override
     public MovieGoer authenticate(String email, String password) throws SecurityException {
-        return AuthenticationManagerFactory
-                .getDefaultAuthenticationManager()
+        return DefaultAuthenticationManager.getInstance()
                 .tryAuth(email, password);
     }
 

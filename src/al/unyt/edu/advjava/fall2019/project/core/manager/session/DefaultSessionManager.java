@@ -1,21 +1,24 @@
-package al.unyt.edu.advjava.fall2019.project.manager;
+package al.unyt.edu.advjava.fall2019.project.core.manager.session;
 
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 
-public class SessionManager {
-    private static final SessionManager INSTANCE;
+public final class DefaultSessionManager implements SessionManager {
+    private static final DefaultSessionManager INSTANCE;
     private static final String USER_KEY = "USER";
 
     static {
-        INSTANCE = new SessionManager();
+        INSTANCE = new DefaultSessionManager();
     }
 
+    private DefaultSessionManager() { }
 
-    public static SessionManager getInstance() {
+    public static DefaultSessionManager getInstance() {
         return INSTANCE;
     }
 
@@ -27,17 +30,28 @@ public class SessionManager {
     }
 
     private HttpSession getSession(boolean create) {
-        return (HttpSession) FacesContext
-                    .getCurrentInstance()
-                    .getExternalContext()
+        return (HttpSession) getExternalContext()
                     .getSession(create);
     }
 
-    public void invalidateSession() {
-        FacesContext
+    private ExternalContext getExternalContext() {
+        return FacesContext
                 .getCurrentInstance()
-                .getExternalContext()
+                .getExternalContext();
+    }
+
+    public void invalidateSession() {
+        getExternalContext()
                 .invalidateSession();
+    }
+
+    public void redirect(String url) {
+        try {
+            getExternalContext().redirect(url);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

@@ -1,4 +1,4 @@
-package al.unyt.edu.advjava.fall2019.project.persistence.auth;
+package al.unyt.edu.advjava.fall2019.project.core.manager.auth;
 
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 

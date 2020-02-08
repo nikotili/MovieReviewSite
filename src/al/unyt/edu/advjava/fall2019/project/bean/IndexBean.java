@@ -1,6 +1,6 @@
 package al.unyt.edu.advjava.fall2019.project.bean;
 
-import al.unyt.edu.advjava.fall2019.project.core.DefaultAppController;
+import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 
 import javax.annotation.PostConstruct;

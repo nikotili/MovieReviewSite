@@ -1,6 +1,6 @@
 package al.unyt.edu.advjava.fall2019.project.bean;
 
-import al.unyt.edu.advjava.fall2019.project.manager.SessionManager;
+import al.unyt.edu.advjava.fall2019.project.core.manager.session.DefaultSessionManager;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 
 import javax.faces.bean.ManagedBean;
@@ -10,13 +10,11 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class ControlPanelBean {
 
-    private final SessionManager sessionManager = SessionManager.getInstance();
+    private final DefaultSessionManager sessionManager = DefaultSessionManager.getInstance();
 
-    public String logOutAction() {
-        sessionManager
-                .invalidateSession();
-
-        return BeanUtil.INDEX_URI;
+    public void logOutAction() {
+        sessionManager.invalidateSession();
+        sessionManager.redirect(BeanUtil.INDEX_URI);
     }
 
     private boolean isUserLoggedIn() {
@@ -33,7 +31,6 @@ public class ControlPanelBean {
 
     public String getUserFullName() {
         MovieGoer user = sessionManager.getLoggedInUser();
-
         return user.fullName();
     }
 }

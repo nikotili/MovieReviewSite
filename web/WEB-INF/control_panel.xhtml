@@ -3,16 +3,18 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLink value="login.xhtml" rendered="#{controlPanelBean.logInRendered}">
-        Log In
-    </h:outputLink>
-    <h:panelGrid columns="2" id="userPanel" rendered="#{controlPanelBean.userPanelRendered}">
-        <h:outputLabel value="#{controlPanelBean.userFullName}"/>
-        <h:commandLink action="#{controlPanelBean.logOutAction}">
-            Log Out
-        </h:commandLink>
-    </h:panelGrid>
-</f:view>
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition>
+        <h:outputLink value="login.xhtml" rendered="#{controlPanelBean.logInRendered}">
+            Log In
+        </h:outputLink>
+        <h:panelGrid columns="2" id="userPanel" rendered="#{controlPanelBean.userPanelRendered}">
+            <h:outputLabel value="#{controlPanelBean.userFullName}"/>
+            <h:form>
+                <h:commandLink action="#{controlPanelBean.logOutAction}">
+                    Log Out
+                </h:commandLink>
+            </h:form>
+        </h:panelGrid>
+    </ui:composition>
 </html>

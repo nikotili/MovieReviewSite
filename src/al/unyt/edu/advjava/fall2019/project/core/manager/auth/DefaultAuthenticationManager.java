@@ -1,9 +1,21 @@
-package al.unyt.edu.advjava.fall2019.project.persistence.auth;
+package al.unyt.edu.advjava.fall2019.project.core.manager.auth;
 
 import al.unyt.edu.advjava.fall2019.project.persistence.dao.DaoFactory;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 
-final class DefaultAuthenticationManager implements AuthenticationManager {
+public final class DefaultAuthenticationManager implements AuthenticationManager {
+
+    private static final DefaultAuthenticationManager AUTHENTICATION_MANAGER;
+
+    static {
+        AUTHENTICATION_MANAGER = new DefaultAuthenticationManager();
+    }
+
+    private DefaultAuthenticationManager() {}
+
+    public static DefaultAuthenticationManager getInstance() {
+        return AUTHENTICATION_MANAGER;
+    }
 
     @Override
     public MovieGoer tryAuth(String email, String password) throws SecurityException {
