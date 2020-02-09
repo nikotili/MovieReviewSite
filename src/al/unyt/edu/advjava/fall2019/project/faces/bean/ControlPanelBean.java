@@ -1,4 +1,4 @@
-package al.unyt.edu.advjava.fall2019.project.bean;
+package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
 import al.unyt.edu.advjava.fall2019.project.core.manager.session.DefaultSessionManager;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
@@ -14,7 +14,7 @@ public class ControlPanelBean {
 
     public void logOutAction() {
         sessionManager.invalidateSession();
-        sessionManager.redirect(BeanUtil.INDEX_URI);
+        BeanUtil.redirect(BeanUtil.INDEX_URI);
     }
 
     private boolean isUserLoggedIn() {

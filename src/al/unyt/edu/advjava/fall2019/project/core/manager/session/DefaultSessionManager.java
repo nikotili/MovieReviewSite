@@ -5,7 +5,6 @@ import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 
 
 public final class DefaultSessionManager implements SessionManager {
@@ -34,7 +33,7 @@ public final class DefaultSessionManager implements SessionManager {
                     .getSession(create);
     }
 
-    private ExternalContext getExternalContext() {
+    public ExternalContext getExternalContext() {
         return FacesContext
                 .getCurrentInstance()
                 .getExternalContext();
@@ -43,15 +42,6 @@ public final class DefaultSessionManager implements SessionManager {
     public void invalidateSession() {
         getExternalContext()
                 .invalidateSession();
-    }
-
-    public void redirect(String url) {
-        try {
-            getExternalContext().redirect(url);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 

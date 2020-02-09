@@ -1,4 +1,4 @@
-package al.unyt.edu.advjava.fall2019.project.bean;
+package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
 import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController;
 import al.unyt.edu.advjava.fall2019.project.core.manager.session.DefaultSessionManager;
@@ -16,7 +16,7 @@ public class LoginBean {
     @PostConstruct
     public void init() {
         if (sessionManager.hasLoggedUser())
-            sessionManager.redirect(BeanUtil.INDEX_URI);
+            BeanUtil.redirect(BeanUtil.INDEX_URI);
     }
 
     public String getEmail() {
@@ -42,7 +42,7 @@ public class LoginBean {
                     .authenticate(email, password);
 
             sessionManager.createSession(movieGoer);
-            sessionManager.redirect(BeanUtil.INDEX_URI);
+            BeanUtil.redirect(BeanUtil.INDEX_URI);
 
         }
         catch (SecurityException e) {

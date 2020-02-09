@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/web/WEB-INF/control_panel.xhtml" value="file://$PROJECT_DIR$/web/WEB-INF" />
+        <entry key="file://$PROJECT_DIR$/web/add-movie.xhtml" value="file://$PROJECT_DIR$/web" />
       </map>
     </option>
   </component>

@@ -11,4 +11,6 @@ public interface AppController {
 
     List<Movie> getAllMovies();
 
+    void addMovie(Movie movie);
+
 }

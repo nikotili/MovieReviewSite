@@ -1,6 +1,7 @@
-package al.unyt.edu.advjava.fall2019.project.bean;
+package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
 import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController;
+import al.unyt.edu.advjava.fall2019.project.core.manager.session.DefaultSessionManager;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 
 import javax.annotation.PostConstruct;
@@ -24,7 +25,9 @@ public class IndexBean {
         return movieList;
     }
 
-    public void setMovieList(List<Movie> movieList) {
-        this.movieList = movieList;
+    public String addNewMovie() {
+        if (DefaultSessionManager.getInstance().hasLoggedUser())
+            return BeanUtil.ADD_MOVIE_URI;
+        return null;
     }
 }

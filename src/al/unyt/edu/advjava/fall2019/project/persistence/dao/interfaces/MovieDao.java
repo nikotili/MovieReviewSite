@@ -11,4 +11,8 @@ public interface MovieDao extends ModelDao<Movie, Integer> {
     Map<Movie, Double> getMovieAvgRatings() throws PersistenceException;
 
     List<Movie> getMoviesByAverageRatingRange(double min, double max) throws PersistenceException;
+
+    Map<String, String> getMovieRatings();
+
+    List<String> getMovieGenres();
 }

@@ -31,4 +31,9 @@ public final class DefaultAppController implements AppController {
     public List<Movie> getAllMovies() {
         return DaoFactory.getMovieDao().getAll();
     }
+
+    @Override
+    public void addMovie(Movie movie) {
+        DaoFactory.getMovieDao().persist(movie);
+    }
 }

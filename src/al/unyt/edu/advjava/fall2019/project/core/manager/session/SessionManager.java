@@ -8,8 +8,6 @@ public interface SessionManager {
 
     void invalidateSession();
 
-    void redirect(String url);
-
     boolean hasLoggedUser();
 
     MovieGoer getLoggedInUser();
