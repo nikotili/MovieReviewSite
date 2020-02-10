@@ -5,7 +5,8 @@ import al.unyt.edu.advjava.fall2019.project.persistence.dao.DaoFactory;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.Map;
 
 public final class DefaultAppController implements AppController {
 
@@ -28,12 +29,22 @@ public final class DefaultAppController implements AppController {
     }
 
     @Override
-    public List<Movie> getAllMovies() {
+    public Collection<Movie> getAllMovies() {
         return DaoFactory.getMovieDao().getAll();
     }
 
     @Override
     public void addMovie(Movie movie) {
         DaoFactory.getMovieDao().persist(movie);
+    }
+
+    @Override
+    public Collection<String> getMovieGenres() {
+        return DaoFactory.getMovieDao().getMovieGenres();
+    }
+
+    @Override
+    public Map<String, String> getMovieRatings() {
+        return DaoFactory.getMovieDao().getMovieRatings();
     }
 }

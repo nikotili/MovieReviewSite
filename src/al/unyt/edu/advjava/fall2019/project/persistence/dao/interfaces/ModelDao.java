@@ -1,17 +1,17 @@
 package al.unyt.edu.advjava.fall2019.project.persistence.dao.interfaces;
 
-import al.unyt.edu.advjava.fall2019.project.persistence.PersistenceUtils;
+import al.unyt.edu.advjava.fall2019.project.persistence.PersistenceUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
-import java.util.List;
+import java.util.Collection;
 import java.util.function.Supplier;
 
 public interface ModelDao<Entity, PK> {
 
-    Supplier<EntityManager> entityManagerSupplier = PersistenceUtils::newDefaultEntityManager;
+    Supplier<EntityManager> entityManagerSupplier = PersistenceUtil::newDefaultEntityManager;
 
-    List<Entity> getAll() throws PersistenceException;
+    Collection<Entity> getAll() throws PersistenceException;
 
     void persist(Entity entity) throws PersistenceException;
 
@@ -19,5 +19,5 @@ public interface ModelDao<Entity, PK> {
 
     void delete(Entity entity) throws PersistenceException;
 
-    List<Entity> getByColumnName(String columnName, String value) throws PersistenceException;
+    Collection<Entity> getByColumnName(String columnName, String value) throws PersistenceException;
 }

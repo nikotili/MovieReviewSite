@@ -5,7 +5,7 @@ CREATE TABLE movies
     id           INT          NOT NULL AUTO_INCREMENT,
     title        varchar(30)  NOT NULL,
     release_date DATE         NOT NULL,
-    synopsis     varchar(400) NOT NULL,
+    synopsis     varchar(400),
     genre        varchar(30)  NOT NULL,
     rating       varchar(10)  NOT NULL,
     PRIMARY KEY (id)
@@ -40,7 +40,7 @@ CREATE TABLE rating
     movie_goer_email VARCHAR(50)  NOT NULL,
     movie_id         INT          NOT NULL,
     rating           INT          NOT NULL,
-    comment          varchar(100) NOT NULL,
+    comment          varchar(100),
     PRIMARY KEY (movie_goer_email, movie_id)
 );
 

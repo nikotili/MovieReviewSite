@@ -4,20 +4,37 @@ import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 
 import javax.faces.bean.ManagedBean;
-import java.sql.Date;
+import java.util.Collection;
+import java.util.Map;
 
-//fixme error when logout from here
 
 @ManagedBean
-public class AddMovieBean {
+public class AddMovieBean extends RequiresLoginBean {
     private String title;
-    private Date releaseDate;
+    private java.util.Date releaseDate;
     private String synopsis;
     private String genre;
     private String rating;
+    private Collection<String> genres;
+    private Map<String, String> ratingsMap;
 
+    @Override
+    public void init() {
+        super.init();
+        genres = DefaultAppController.getInstance().getMovieGenres();
+        ratingsMap = DefaultAppController.getInstance().getMovieRatings();
+    }
 
-    public String getTitle() {
+    public Collection<String> getGenres() {
+        return genres;
+    }
+
+    public Map<String, String> getRatingsMap() {
+        return ratingsMap;
+    }
+
+    public String getTitle()
+    {
         return title;
     }
 
@@ -25,11 +42,11 @@ public class AddMovieBean {
         this.title = title;
     }
 
-    public Date getReleaseDate() {
+    public java.util.Date getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(java.util.Date releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -57,11 +74,10 @@ public class AddMovieBean {
         this.rating = rating;
     }
 
-//fixme not safe
     public void addMovie() {
         Movie movie = new Movie();
         movie.setTitle(title);
-        movie.setReleaseDate(releaseDate);
+        movie.setReleaseDate(BeanUtil.toSqlDate(releaseDate));
         movie.setSynopsis(synopsis);
         movie.setGenre(genre);
         movie.setRating(rating);

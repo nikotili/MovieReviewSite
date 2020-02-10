@@ -15,7 +15,12 @@ import java.sql.Date;
 public class DateConverter implements Converter<Date> {
     @Override
     public Date getAsObject(FacesContext context, UIComponent component, String value) {
-        return Date.valueOf(value);
+        try {
+            return Date.valueOf(value);
+        }
+        catch (IllegalArgumentException e) {
+            return null;
+        }
     }
 
     @Override

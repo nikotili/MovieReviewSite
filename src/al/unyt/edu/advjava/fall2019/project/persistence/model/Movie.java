@@ -50,7 +50,7 @@ public class Movie {
     }
 
     @Basic
-    @Column(name = "synopsis", nullable = false, length = 400)
+    @Column(name = "synopsis", length = 400)
     public String getSynopsis() {
         return synopsis;
     }

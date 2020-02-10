@@ -8,7 +8,7 @@ public class BeanUtil {
 
     public static String INDEX_URI = "index.xhtml";
     public static String LOGIN_URI = "login.xhtml";
-    public static String ADD_MOVIE_URI = "WEB-INF/add-movie.xhtml";
+    public static String ADD_MOVIE_URI = "add-movie.xhtml";
 
 
     private BeanUtil() throws IllegalAccessException {
@@ -19,7 +19,7 @@ public class BeanUtil {
         try {
             getFacesContextInstance()
                     .getExternalContext()
-                    .redirect(url);
+                    .redirect(url + "?faces-redirect=true");
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -29,6 +29,10 @@ public class BeanUtil {
     public static void displayMessage(String componentID, String message) {
         getFacesContextInstance()
                 .addMessage(componentID, new FacesMessage(message));
+    }
+
+    public static java.sql.Date toSqlDate(java.util.Date date) {
+        return new java.sql.Date(date.getTime());
     }
 
     private static FacesContext getFacesContextInstance() {

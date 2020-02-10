@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name = "ratings", schema = "movie_review")
 @IdClass(RatingsPK.class)
 public class Rating {
     private String movieGoerEmail;
@@ -42,7 +43,7 @@ public class Rating {
     }
 
     @Basic
-    @Column(name = "comment", nullable = false, length = 100)
+    @Column(name = "comment", length = 100)
     public String getComment() {
         return comment;
     }

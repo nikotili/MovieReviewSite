@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-final public class PersistenceUtils {
+final public class PersistenceUtil {
     public static final String OPERATOR_EQUALS = " = ";
     public static final String OPERATOR_LIKE = " LIKE ";
     private static final String DEFAULT_PERSISTENCE_UNIT_NAME = "movieReview-PU";
@@ -14,7 +14,7 @@ final public class PersistenceUtils {
         DEFAULT_ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory(DEFAULT_PERSISTENCE_UNIT_NAME);
     }
 
-    private PersistenceUtils() throws IllegalAccessException {
+    private PersistenceUtil() throws IllegalAccessException {
         throw new IllegalAccessException();
     }
 

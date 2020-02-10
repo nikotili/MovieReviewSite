@@ -4,11 +4,11 @@ import al.unyt.edu.advjava.fall2019.project.persistence.dao.interfaces.MovieGoer
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 
 import javax.persistence.PersistenceException;
-import java.util.List;
+import java.util.Collection;
 
 final class MovieGoerDaoImpl implements MovieGoerDao {
     @Override
-    public List<MovieGoer> getAll() throws PersistenceException {
+    public Collection<MovieGoer> getAll() throws PersistenceException {
         return null;
     }
 
@@ -30,7 +30,7 @@ final class MovieGoerDaoImpl implements MovieGoerDao {
     }
 
     @Override
-    public List<MovieGoer> getByColumnName(String columnName, String value) throws PersistenceException {
+    public Collection<MovieGoer> getByColumnName(String columnName, String value) throws PersistenceException {
         return null;
     }
 }

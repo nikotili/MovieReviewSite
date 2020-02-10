@@ -5,10 +5,7 @@ import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 final class MovieDaoImpl implements MovieDao {
 
@@ -18,7 +15,7 @@ final class MovieDaoImpl implements MovieDao {
     }
 
     @Override
-    public List<Movie> getMoviesByAverageRatingRange(double min, double max) throws PersistenceException {
+    public Collection<Movie> getMoviesByAverageRatingRange(double min, double max) throws PersistenceException {
         return null;
     }
 
@@ -36,7 +33,7 @@ final class MovieDaoImpl implements MovieDao {
     }
 
     @Override
-    public List<String> getMovieGenres() {
+    public Collection<String> getMovieGenres() {
         List<String> movieGenres = new ArrayList<>();
 
         movieGenres.add("Action");
@@ -54,7 +51,7 @@ final class MovieDaoImpl implements MovieDao {
     }
 
     @Override
-    public List<Movie> getAll() throws PersistenceException {
+    public Collection<Movie> getAll() throws PersistenceException {
         return entityManagerSupplier
                 .get()
                 .createNamedQuery("Movie.findAll", Movie.class)
@@ -80,7 +77,7 @@ final class MovieDaoImpl implements MovieDao {
     }
 
     @Override
-    public List<Movie> getByColumnName(String columnName, String value) throws PersistenceException {
+    public Collection<Movie> getByColumnName(String columnName, String value) throws PersistenceException {
         return null;
     }
 }
