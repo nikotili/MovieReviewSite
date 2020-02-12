@@ -1,0 +1,150 @@
+/*.error
+{
+   color:red;
+}
+
+.order-table{
+	border-collapse:collapse;
+}
+
+.table-header{
+	background:none repeat scroll 0 0 #E5E5E5;
+	border-bottom:1px solid #BBBBBB;
+}
+
+.table-odd-row{
+	background:none repeat scroll 0 0 #EEEEEE;
+	border-top:1px solid #BBBBBB;
+}
+
+.table-even-row{
+	background:none repeat scroll 0 0 #F9F9F9;
+	border-top:1px solid #BBBBBB;
+}
+
+#panelGrid {
+    width: 100%;
+}
+
+.left-column {
+    background-color: lightgreen;
+    width: 15%;
+}
+
+.right-column {
+    width: 35%;
+}
+
+.header {
+    background-color: lightgreen;
+    font-size: 12px;
+    font-style: italic;
+}*/
+
+
+/*LOGIN*/
+.login {
+  margin: 20px auto;
+  width: 300px;
+  padding: 30px 25px;
+  background: white;
+  border: 1px solid #c4c4c4;
+}
+
+.thumbnail {
+    width: 350px;
+    height: 500px;
+}
+
+h1.login-title {
+  margin: -28px -25px 25px;
+  padding: 15px 25px;
+  line-height: 30px;
+  font-size: 25px;
+  font-weight: 300;
+  color: #ADADAD;
+  text-align:center;
+  background: #f7f7f7;
+ 
+}
+
+.login-input {
+  width: 285px;
+  height: 50px;
+  margin-bottom: 25px;
+  padding-left:10px;
+  font-size: 15px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.login-input:focus {
+    border-color:#6e8095;
+    outline: none;
+  }
+.login-button {
+  width: 100%;
+  height: 50px;
+  padding: 0;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  background: #f0776c;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer; 
+  outline:0;
+}
+
+
+.login-lost
+{
+  text-align:center;
+  margin-bottom:0px;
+}
+
+.login-lost a
+{
+  color:#666;
+  text-decoration:none;
+  font-size:13px;
+}
+
+/*TABLE*/
+table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.add-review {
+  background-color: lightsteelblue;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  float: right;
+}
+
+.cover-image {
+  height: 100px;
+  width: 70px;
+}
+
+.movie-title {
+    text-decoration: none;
+    color: blue;
+    font-size: 1.5em;
+}

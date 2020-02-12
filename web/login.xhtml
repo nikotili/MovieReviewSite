@@ -4,30 +4,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Login Page</title>
+    <h:outputStylesheet name="css/bootstrap.css" />
+</h:head>
+<h:body>
 <f:view>
-    <h:form>
-        <h:panelGrid columns="1">
-            <label>
-                Email
-            </label>
-            <h:inputText id="emailInputText"
-                         value="#{loginBean.email}"
-                         required="true"
-                         requiredMessage="Please enter your email">
-                <f:validateLength minimum="2" maximum="30" />
-            </h:inputText>
-            <h:message for="emailInputText" styleClass="error"/>
-            <label>
-                Password
-            </label>
-            <h:inputSecret id="passwordInputText"
-                           value="#{loginBean.password}"
-                           required="true"
-                           requiredMessage="Please enter your password">
-            </h:inputSecret>
-            <h:commandButton id="loginButton" value="Log In" action="#{loginBean.authenticate}"/>
-        </h:panelGrid>
-    </h:form>
-    <h:message for="loginButton"/>
+    <h:panelGroup styleClass="container ">
+        <h:panelGroup styleClass="row justify-content-center align-items-center" >
+            <h:panelGroup styleClass="col-md-12">
+                <h:panelGroup styleClass="col-md-3" >
+                </h:panelGroup>
+                <h:panelGroup styleClass="col-md-6" >
+                    <h:form styleClass="form" style="margin: auto">
+                        <h3 class="text-center text-primary">Login</h3>
+                        <h:panelGroup  styleClass="form-group"  >
+                            <h:outputText styleClass="text-primary" value="Email:" />
+                            <h:inputText id="emailInputText"
+                                         value="#{loginBean.email}"
+                                         required="true"
+                                         styleClass="form-control"
+                                         requiredMessage="Please enter your email">
+                                <f:validateLength minimum="2" maximum="30" />
+                            </h:inputText><br/>
+                        </h:panelGroup>
+
+                        <h:panelGroup  styleClass="form-group" >
+                            <h:outputText styleClass="text-primary" value="Password:" />
+                            <h:inputSecret id="passwordInputText"
+                                           value="#{loginBean.password}"
+                                           required="true"
+                                           styleClass="form-control"
+                                           requiredMessage="Please enter your password">
+                            </h:inputSecret><br/>
+                        </h:panelGroup>
+                        <h:messages style="color:red" />
+
+                        <h:commandButton id="loginButton" styleClass="btn btn-primary btn-md" value="Log In" action="#{loginBean.authenticate}"/>
+                    </h:form>
+                    <h:message for="loginButton"/>
+                </h:panelGroup>
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:panelGroup>
 </f:view>
+</h:body>
 </html>
