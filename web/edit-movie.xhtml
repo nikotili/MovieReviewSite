@@ -13,19 +13,19 @@
                 Title
             </h:outputLabel>
             <h:inputText id="titleInputText"
-                         value="#{addMovieBean.title}"
+                         value="#{editMovieBean.title}"
                          required="true"
                          requiredMessage="Title is required"
-                             validatorMessage="Max 30 chars">
-                    <f:validateLength for="titleInputText"
-                                      maximum="30"/>
+                         validatorMessage="Max 30 chars">
+                <f:validateLength for="titleInputText"
+                                  maximum="30"/>
             </h:inputText>
             <h:message for="titleInputText"/>
             <h:outputLabel>
                 Release Date (yyyy-mm-dd)
             </h:outputLabel>
             <h:inputText id="dateInputText"
-                         value="#{addMovieBean.releaseDate}"
+                         value="#{editMovieBean.releaseDate}"
                          required="true"
                          requiredMessage="Relase Date is required"
                          converterMessage="Wrong date format">
@@ -40,7 +40,7 @@
             <h:inputTextarea id="synopsisInputText"
                              rows="10"
                              cols="40"
-                             value="#{addMovieBean.synopsis}"
+                             value="#{editMovieBean.synopsis}"
                              validatorMessage="Max 400 chars">
                 <f:validateLength for="synopsisInputText"
                                   maximum="400"/>
@@ -50,20 +50,20 @@
                 Genre
             </h:outputLabel>
             <h:selectOneMenu id="genreSelect"
-                             value="#{addMovieBean.genre}">
-                <f:selectItems value="#{addMovieBean.genres}"/>
+                             value="#{editMovieBean.genre}">
+                <f:selectItems value="#{editMovieBean.genres}"/>
             </h:selectOneMenu>
             <h:message for="genreSelect"/>
             <h:outputLabel>
                 Rating
             </h:outputLabel>
             <h:selectOneMenu id="ratingSelect"
-                             value="#{addMovieBean.rating}">
-                <f:selectItems value="#{addMovieBean.ratingsMap}"/>
+                             value="#{editMovieBean.rating}">
+                <f:selectItems value="#{editMovieBean.ratingsMap}"/>
             </h:selectOneMenu>
             <h:message for="ratingSelect"/>
         </h:panelGrid>
-        <h:commandButton value="Add" id="addMovieButton" action="#{addMovieBean.saveAction}"/>
+        <h:commandButton value="Save" id="addMovieButton" action="#{editMovieBean.saveAction}"/>
         <h:message for="addMovieButton"/>
     </h:form>
 </f:view>

@@ -19,7 +19,9 @@
             </h:column>
             <h:column>
                 <f:facet name="header">Title</f:facet>
-                #{movie.title}
+                <h:outputLink value="#{indexBean.getMovieInfoURL(movie.id)}">
+                    #{movie.title}
+                </h:outputLink>
             </h:column>
             <h:column>
                 <f:facet name="header">Rating</f:facet>

@@ -14,6 +14,10 @@ public interface AppController {
 
     void addMovie(Movie movie);
 
+    Movie getMovieByPK(Integer id);
+
+    void updateMovie(Movie movie);
+
     Collection<String> getMovieGenres();
 
     Map<String, String> getMovieRatings();

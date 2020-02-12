@@ -47,4 +47,14 @@ public final class DefaultAppController implements AppController {
     public Map<String, String> getMovieRatings() {
         return DaoFactory.getMovieDao().getMovieRatings();
     }
+
+    @Override
+    public Movie getMovieByPK(Integer id) {
+        return DaoFactory.getMovieDao().getByPK(Movie.class, id);
+    }
+
+    @Override
+    public void updateMovie(Movie movie) {
+        DaoFactory.getMovieDao().update(movie);
+    }
 }

@@ -21,7 +21,7 @@ public final class DefaultAuthenticationManager implements AuthenticationManager
     public MovieGoer tryAuth(String email, String password) throws SecurityException {
         MovieGoer movieGoer = DaoFactory
                 .getMovieGoerDao()
-                .getByPK(email);
+                .getByPK(MovieGoer.class, email);
 
         if (movieGoer == null)
             throw new SecurityException("Wrong email!");

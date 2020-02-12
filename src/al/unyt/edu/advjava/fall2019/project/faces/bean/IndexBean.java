@@ -13,7 +13,9 @@ import java.util.Collection;
 @RequestScoped
 public class IndexBean {
     private Collection<Movie> movieList;
-    private RequiresLoginMethodNoParam<String> addNewMovieMethod = () -> BeanUtil.ADD_MOVIE_URI;
+    private RequiresLoginMethodNoParam<String> addNewMovieMethod = () -> redirectTo(BeanUtil.ADD_MOVIE_URI);
+    private RequiresLoginMethodNoParam<String> editMovieMethod = () -> redirectTo(BeanUtil.EDIT_MOVIE_URI);
+
 
     @PostConstruct
     public void init() {
@@ -28,5 +30,14 @@ public class IndexBean {
 
     public RequiresLoginMethodNoParam<String> getAddNewMovieMethod() {
         return addNewMovieMethod;
+    }
+
+    private String redirectTo(String url) {
+        BeanUtil.redirect(url);
+        return null;
+    }
+
+    public String getMovieInfoURL(int movieID) {
+        return BeanUtil.buildMovieInfoURL(movieID);
     }
 }

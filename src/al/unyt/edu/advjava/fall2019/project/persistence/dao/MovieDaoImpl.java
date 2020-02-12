@@ -3,7 +3,6 @@ package al.unyt.edu.advjava.fall2019.project.persistence.dao;
 import al.unyt.edu.advjava.fall2019.project.persistence.dao.interfaces.MovieDao;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 
-import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import java.util.*;
 
@@ -58,18 +57,6 @@ final class MovieDaoImpl implements MovieDao {
                 .getResultList();
     }
 
-    @Override
-    public void persist(Movie movie) throws PersistenceException {
-        EntityManager entityManager = entityManagerSupplier.get();
-        entityManager.getTransaction().begin();
-        entityManager.persist(movie);
-        entityManager.getTransaction().commit();
-    }
-
-    @Override
-    public Movie getByPK(Integer primaryKey) throws PersistenceException {
-        return null;
-    }
 
     @Override
     public void delete(Movie movie) throws PersistenceException {

@@ -13,18 +13,6 @@ final class MovieGoerDaoImpl implements MovieGoerDao {
     }
 
     @Override
-    public void persist(MovieGoer movieGoer) throws PersistenceException {
-
-    }
-
-    @Override
-    public MovieGoer getByPK(String primaryKey) throws PersistenceException {
-        return entityManagerSupplier
-                .get()
-                .find(MovieGoer.class, primaryKey);
-    }
-
-    @Override
     public void delete(MovieGoer movieGoer) throws PersistenceException {
 
     }

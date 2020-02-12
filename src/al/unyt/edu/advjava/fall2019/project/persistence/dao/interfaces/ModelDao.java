@@ -13,9 +13,35 @@ public interface ModelDao<Entity, PK> {
 
     Collection<Entity> getAll() throws PersistenceException;
 
-    void persist(Entity entity) throws PersistenceException;
+    default void persist(Entity entity) throws PersistenceException {
+        EntityManager entityManager = entityManagerSupplier.get();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(entity);
+            entityManager.getTransaction().commit();
+        }
+        finally {
+            if (entityManager != null)
+                entityManager.close();
+        }
+    }
 
-    Entity getByPK(PK primaryKey) throws PersistenceException;
+    default Entity getByPK(Class<Entity> entityClass, PK primaryKey) throws PersistenceException {
+        return entityManagerSupplier.get().find(entityClass, primaryKey);
+    }
+
+    default void update(Entity entity) {
+        EntityManager entityManager = entityManagerSupplier.get();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.merge(entity);
+            entityManager.getTransaction().commit();
+        }
+        finally {
+            if (entityManager != null)
+                entityManager.close();
+        }
+    }
 
     void delete(Entity entity) throws PersistenceException;
 

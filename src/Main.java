@@ -15,6 +15,6 @@ public class Main {
         EntityManager em = entityManagerFactory.createEntityManager();
 
 
-        System.out.println(em.createNamedQuery("Movie.findAll", Movie.class).getResultList().size());
+        System.out.println(em.find(Movie.class, 1));
     }
 }

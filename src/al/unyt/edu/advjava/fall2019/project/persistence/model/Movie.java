@@ -1,6 +1,7 @@
 package al.unyt.edu.advjava.fall2019.project.persistence.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 import java.util.Set;
@@ -10,7 +11,7 @@ import java.util.Set;
 )
 @Entity
 @Table(name = "movies", schema = "movie_review")
-public class Movie {
+public class Movie implements Serializable {
     private int id;
     private String title;
     private Date releaseDate;
