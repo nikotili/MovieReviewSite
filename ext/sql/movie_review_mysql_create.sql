@@ -7,7 +7,7 @@ CREATE TABLE movies
     release_date DATE         NOT NULL,
     synopsis     varchar(400),
     genre        varchar(30)  NOT NULL,
-    rating       varchar(10)  NOT NULL,
+    rating       varchar(30)  NOT NULL,
     PRIMARY KEY (id)
 );
 

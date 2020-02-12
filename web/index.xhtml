@@ -12,6 +12,20 @@
         <h:commandLink id="goToAddMovieLink" action="#{indexBean.addNewMovieMethod.call}">
             Add New Movie
         </h:commandLink>
+        <h:dataTable value="#{indexBean.movieList}" var="movie">
+            <h:column>
+                <f:facet name="header">Image</f:facet>
+                #{movie.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Title</f:facet>
+                #{movie.title}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Rating</f:facet>
+                5
+            </h:column>
+        </h:dataTable>
     </h:form>
 </f:view>
 </html>
