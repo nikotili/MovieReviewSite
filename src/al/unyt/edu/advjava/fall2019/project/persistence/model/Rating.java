@@ -11,6 +11,7 @@ public class Rating {
     private int movieId;
     private int rating;
     private String comment;
+    private Movie movie;
 
     @Id
     @Column(name = "movie_goer_email", nullable = false, length = 50)
@@ -50,6 +51,21 @@ public class Rating {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    @JoinColumn(
+            name = "movie_id",
+            referencedColumnName = "id",
+            insertable = false,
+            updatable = false
+    )
+    @ManyToOne(optional = false)
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 
     @Override
