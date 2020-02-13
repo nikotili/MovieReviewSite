@@ -15,6 +15,6 @@ public class Main {
         EntityManager em = entityManagerFactory.createEntityManager();
 
 
-        System.out.println(em.find(Movie.class, 1));
+        System.out.println(em.find(Movie.class, 1).getRatings().get(0).getComment());
     }
 }

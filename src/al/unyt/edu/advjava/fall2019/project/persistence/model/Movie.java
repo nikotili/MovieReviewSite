@@ -3,6 +3,7 @@ package al.unyt.edu.advjava.fall2019.project.persistence.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -19,6 +20,7 @@ public class Movie implements Serializable {
     private String genre;
     private String rating;
     private Set<Director> directors;
+    private List<Rating> ratings;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -92,6 +94,23 @@ public class Movie implements Serializable {
 
     public void setDirectors(Set<Director> directors) {
         this.directors = directors;
+    }
+
+    @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER)
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
+    }
+
+    public double calculateAndGetAvgRating() {
+        return ratings
+                .stream()
+                .mapToInt(Rating::getRating)
+                .average()
+                .orElse(0.0);
     }
 
     @Override
