@@ -9,11 +9,10 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class AddMovieBean extends ManageMovieBean {
 
-
-
     @Override
     public void saveAction() {
         final Movie movie = getUpdatedMovie();
-        DefaultAppController.getInstance().addMovie(movie);
-        BeanUtil.redirect(BeanUtil.INDEX_URI);
-    }}
+        DefaultAppController.getInstance().addNewMovie(movie);
+        FacesUtil.redirect(FacesUtil.INDEX_URI);
+    }
+}

@@ -11,6 +11,6 @@ public class RequiresLoginBean {
     @PostConstruct
     public void init() {
         if (!DefaultSessionManager.getInstance().hasLoggedUser())
-            BeanUtil.redirect(BeanUtil.LOGIN_URI);
+            FacesUtil.redirect(FacesUtil.LOGIN_URI);
     }
 }

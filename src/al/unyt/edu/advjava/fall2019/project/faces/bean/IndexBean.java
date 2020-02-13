@@ -1,8 +1,8 @@
 package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
-import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController;
+import al.unyt.edu.advjava.fall2019.project.faces.converter.MovieConverter;
+import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
 import al.unyt.edu.advjava.fall2019.project.faces.method.RequiresLoginMethodNoParam;
-import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -12,19 +12,17 @@ import java.util.Collection;
 @ManagedBean
 @RequestScoped
 public class IndexBean {
-    private Collection<Movie> movieList;
-    private RequiresLoginMethodNoParam<String> addNewMovieMethod = () -> redirectTo(BeanUtil.ADD_MOVIE_URI);
-    private RequiresLoginMethodNoParam<String> editMovieMethod = () -> redirectTo(BeanUtil.EDIT_MOVIE_URI);
+    private Collection<MovieData> movieList;
+    private RequiresLoginMethodNoParam<String> addNewMovieMethod = () -> redirectTo(FacesUtil.ADD_MOVIE_URI);
+    private RequiresLoginMethodNoParam<String> editMovieMethod = () -> redirectTo(FacesUtil.EDIT_MOVIE_URI);
 
 
     @PostConstruct
     public void init() {
-        movieList = DefaultAppController
-                .getInstance()
-                .getAllMovies();
+        movieList = MovieConverter.allMoviesToDataForIndex();
     }
 
-    public Collection<Movie> getMovieList() {
+    public Collection<MovieData> getMovieList() {
         return movieList;
     }
 
@@ -33,11 +31,11 @@ public class IndexBean {
     }
 
     private String redirectTo(String url) {
-        BeanUtil.redirect(url);
+        FacesUtil.redirect(url);
         return null;
     }
 
     public String getMovieInfoURL(int movieID) {
-        return BeanUtil.buildMovieInfoURL(movieID);
+        return FacesUtil.buildMovieInfoURL(movieID);
     }
 }

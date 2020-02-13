@@ -18,7 +18,7 @@ public class EditMovieBean extends ManageMovieBean implements Serializable {
     }
 
     private void tryFill() {
-        String idString = BeanUtil.getRequestParameterValue(BeanUtil.MOVIE_ID_PARAM);
+        String idString = FacesUtil.getRequestParameterValue(FacesUtil.MOVIE_ID_PARAM);
 
         try {
             Integer id = Integer.valueOf(idString);
@@ -26,7 +26,7 @@ public class EditMovieBean extends ManageMovieBean implements Serializable {
             loadMovieToUpdate(movie);
         }
         catch (NumberFormatException e) {
-            BeanUtil.redirect(BeanUtil.INDEX_URI);
+            FacesUtil.redirect(FacesUtil.INDEX_URI);
         }
     }
 
@@ -45,13 +45,13 @@ public class EditMovieBean extends ManageMovieBean implements Serializable {
         final Movie movie = getUpdatedMovie();
         DefaultAppController.getInstance().updateMovie(movie);
         reset();
-        BeanUtil.redirect(BeanUtil.INDEX_URI);
+        FacesUtil.redirect(FacesUtil.INDEX_URI);
     }
 
 
     //fixme: there should be another way...
     private void reset() {
-        BeanUtil.removeFromSession("editMovieBean");
+        FacesUtil.removeFromSession("editMovieBean");
     }
 
 }

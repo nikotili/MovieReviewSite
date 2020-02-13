@@ -15,17 +15,17 @@
         <h:dataTable value="#{indexBean.movieList}" var="movie">
             <h:column>
                 <f:facet name="header">Image</f:facet>
-                #{movie.id}
+                #{movie.ID}
             </h:column>
             <h:column>
                 <f:facet name="header">Title</f:facet>
-                <h:outputLink value="#{indexBean.getMovieInfoURL(movie.id)}">
+                <h:outputLink value="#{indexBean.getMovieInfoURL(movie.ID)}">
                     #{movie.title}
                 </h:outputLink>
             </h:column>
             <h:column>
                 <f:facet name="header">Rating</f:facet>
-                5
+                #{movie.averageRating}
             </h:column>
         </h:dataTable>
     </h:form>

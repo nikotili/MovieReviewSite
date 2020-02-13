@@ -14,7 +14,7 @@ public class ControlPanelBean {
 
     public void logOutAction() {
         sessionManager.invalidateSession();
-        BeanUtil.redirect(BeanUtil.INDEX_URI);
+        FacesUtil.redirect(FacesUtil.INDEX_URI);
     }
 
     private boolean isUserLoggedIn() {

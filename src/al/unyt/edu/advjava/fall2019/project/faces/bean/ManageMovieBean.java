@@ -1,18 +1,16 @@
 package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
 import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController;
+import al.unyt.edu.advjava.fall2019.project.faces.converter.MovieConverter;
+import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 
 import java.util.Collection;
 import java.util.Map;
 
 public abstract class ManageMovieBean extends RequiresLoginBean {
-    private int ID;
-    private String title;
-    private java.util.Date releaseDate;
-    private String synopsis;
-    private String genre;
-    private String rating;
+
+    private MovieData movieData = new MovieData();
     private Collection<String> genres = DefaultAppController.getInstance().getMovieGenres();
     private Map<String, String> ratingsMap = DefaultAppController.getInstance().getMovieRatings();
 
@@ -25,65 +23,58 @@ public abstract class ManageMovieBean extends RequiresLoginBean {
     }
 
     protected int getID() {
-        return ID;
+        return this.movieData.getID();
     }
 
     protected void setID(int ID) {
-        this.ID = ID;
+        this.movieData.setId(ID);
     }
 
     public String getTitle()
     {
-        return title;
+        return this.movieData.getTitle();
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.movieData.setTitle(title);
     }
 
     public java.util.Date getReleaseDate() {
-        return releaseDate;
+        return this.movieData.getReleaseDate();
     }
 
     public void setReleaseDate(java.util.Date releaseDate) {
-        this.releaseDate = releaseDate;
+        this.movieData.setReleaseDate(releaseDate);
     }
 
     public String getSynopsis() {
-        return synopsis;
+        return this.movieData.getSynopsis();
     }
 
     public void setSynopsis(String synopsis) {
-        this.synopsis = synopsis;
+        this.movieData.setSynopsis(synopsis);
     }
 
     public String getGenre() {
-        return genre;
+        return this.movieData.getGenre();
     }
 
     public void setGenre(String genre) {
-        this.genre = genre;
+        this.movieData.setGenre(genre);
     }
 
     public String getRating() {
-        return rating;
+        return this.movieData.getRating();
     }
 
     public void setRating(String rating) {
-        this.rating = rating;
+        this.movieData.setRating(rating);
     }
 
     public abstract void saveAction();
 
     protected Movie getUpdatedMovie() {
-        Movie movie = new Movie();
-        movie.setId(getID());
-        movie.setTitle(getTitle());
-        movie.setReleaseDate(BeanUtil.toSqlDate(getReleaseDate()));
-        movie.setSynopsis(getSynopsis());
-        movie.setGenre(getGenre());
-        movie.setRating(getRating());
-        return movie;
+        return MovieConverter.toMovieFromData(this.movieData);
     }
 
 }

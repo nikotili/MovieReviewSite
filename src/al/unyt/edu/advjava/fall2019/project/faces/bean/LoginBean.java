@@ -16,7 +16,7 @@ public class LoginBean {
     @PostConstruct
     public void init() {
         if (sessionManager.hasLoggedUser())
-            BeanUtil.redirect(BeanUtil.INDEX_URI);
+            FacesUtil.redirect(FacesUtil.INDEX_URI);
     }
 
     public String getEmail() {
@@ -42,7 +42,7 @@ public class LoginBean {
                     .authenticate(email, password);
 
             sessionManager.createSession(movieGoer);
-            BeanUtil.redirect(BeanUtil.INDEX_URI);
+            FacesUtil.redirect(FacesUtil.INDEX_URI);
 
         }
         catch (SecurityException e) {

@@ -12,7 +12,7 @@ public interface AppController {
 
     Collection<Movie> getAllMovies();
 
-    void addMovie(Movie movie);
+    void addNewMovie(Movie movie);
 
     Movie getMovieByPK(Integer id);
 

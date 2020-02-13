@@ -5,7 +5,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-public class BeanUtil {
+public class FacesUtil {
 
     public static final String INDEX_URI = "index.xhtml";
     public static final String LOGIN_URI = "login.xhtml";
@@ -16,7 +16,7 @@ public class BeanUtil {
     public static final String MOVIE_URI_WITH_PARAM = MOVIES_URI + '?' + MOVIE_ID_PARAM + '=';
 
 
-    private BeanUtil() throws IllegalAccessException {
+    private FacesUtil() throws IllegalAccessException {
         throw new IllegalAccessException();
     }
 
