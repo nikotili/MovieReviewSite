@@ -1,9 +1,7 @@
 package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
 import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController;
-import al.unyt.edu.advjava.fall2019.project.faces.converter.MovieConverter;
 import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
-import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 
 import java.util.Collection;
 import java.util.Map;
@@ -73,8 +71,8 @@ public abstract class ManageMovieBean extends RequiresLoginBean {
 
     public abstract void saveAction();
 
-    protected Movie getUpdatedMovie() {
-        return MovieConverter.toMovieFromData(this.movieData);
+    protected MovieData getMovieData() {
+        return this.movieData;
     }
 
 }

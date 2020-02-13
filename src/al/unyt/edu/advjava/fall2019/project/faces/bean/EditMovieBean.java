@@ -1,10 +1,12 @@
 package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
 import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController;
-import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
+import al.unyt.edu.advjava.fall2019.project.faces.converter.MovieConverter;
+import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.persistence.PersistenceException;
 import java.io.Serializable;
 
 @ManagedBean
@@ -22,16 +24,16 @@ public class EditMovieBean extends ManageMovieBean implements Serializable {
 
         try {
             Integer id = Integer.valueOf(idString);
-            Movie movie = DefaultAppController.getInstance().getMovieByPK(id);
-            loadMovieToUpdate(movie);
+            MovieData movieData = MovieConverter.toDataForEdit(id);
+            loadMovieToUpdate(movieData);
         }
-        catch (NumberFormatException e) {
+        catch (NumberFormatException | PersistenceException e) {
             FacesUtil.redirect(FacesUtil.INDEX_URI);
         }
     }
 
-    private void loadMovieToUpdate(Movie movie) {
-        setID(movie.getId());
+    private void loadMovieToUpdate(MovieData movie) {
+        setID(movie.getID());
         setTitle(movie.getTitle());
         setReleaseDate(movie.getReleaseDate());
         setSynopsis(movie.getSynopsis());
@@ -42,8 +44,10 @@ public class EditMovieBean extends ManageMovieBean implements Serializable {
 
     @Override
     public void saveAction() {
-        final Movie movie = getUpdatedMovie();
-        DefaultAppController.getInstance().updateMovie(movie);
+        final MovieData movieData = getMovieData();
+        DefaultAppController
+                .getInstance()
+                .updateMovie(MovieConverter.toMovieFromData(movieData));
         reset();
         FacesUtil.redirect(FacesUtil.INDEX_URI);
     }

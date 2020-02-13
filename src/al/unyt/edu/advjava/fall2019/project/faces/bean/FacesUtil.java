@@ -14,6 +14,7 @@ public class FacesUtil {
     public static final String MOVIES_URI = "movies.xhtml";
     public static final String MOVIE_ID_PARAM = "id";
     public static final String MOVIE_URI_WITH_PARAM = MOVIES_URI + '?' + MOVIE_ID_PARAM + '=';
+    public static final String EDIT_MOVIE_URI_WITH_PARAM = EDIT_MOVIE_URI + '?' + MOVIE_ID_PARAM + '=';
 
 
     private FacesUtil() throws IllegalAccessException {
@@ -41,6 +42,10 @@ public class FacesUtil {
 
     public static String buildMovieInfoURL(int movieID) {
         return MOVIE_URI_WITH_PARAM + movieID;
+    }
+
+    public static String buildEditMovieURL(int movieID) {
+        return EDIT_MOVIE_URI_WITH_PARAM + movieID;
     }
 
     private static FacesContext getFacesContextInstance() {

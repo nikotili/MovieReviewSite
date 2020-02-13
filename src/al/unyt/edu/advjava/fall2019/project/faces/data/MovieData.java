@@ -1,7 +1,5 @@
 package al.unyt.edu.advjava.fall2019.project.faces.data;
 
-import al.unyt.edu.advjava.fall2019.project.persistence.model.Director;
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +11,7 @@ public class MovieData {
     private String synopsis;
     private String genre;
     private String rating;
-    private Set<Director> directors;
+    private Set<DirectorData> directors;
     double averageRating;
 
 
@@ -25,7 +23,7 @@ public class MovieData {
         private String synopsis = "";
         private String genre = "";
         private String rating = "";
-        private Set<Director> directors = new HashSet<>();
+        private Set<DirectorData> directors = new HashSet<>();
         double averageRating = 0.0D;
 
         public Builder(int id, String title) {
@@ -63,7 +61,7 @@ public class MovieData {
             return this;
         }
 
-        public Builder setDirectors(Set<Director> directors) {
+        public Builder setDirectors(Set<DirectorData> directors) {
             this.directors = directors;
             return this;
         }
@@ -78,7 +76,7 @@ public class MovieData {
         }
     }
 
-    private MovieData(int id, String title, Date releaseDate, String synopsis, String genre, String rating, Set<Director> directors, double averageRating) {
+    private MovieData(int id, String title, Date releaseDate, String synopsis, String genre, String rating, Set<DirectorData> directors, double averageRating) {
         this.id = id;
         this.title = title;
         this.releaseDate = releaseDate;
@@ -139,11 +137,11 @@ public class MovieData {
         this.rating = rating;
     }
 
-    public Set<Director> getDirectors() {
+    public Set<DirectorData> getDirectors() {
         return directors;
     }
 
-    public void setDirectors(Set<Director> directors) {
+    public void setDirectors(Set<DirectorData> directors) {
         this.directors = directors;
     }
 
