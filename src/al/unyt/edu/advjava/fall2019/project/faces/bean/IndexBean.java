@@ -16,6 +16,8 @@ public class IndexBean {
     private RequiresLoginMethodNoParam<String> addNewMovieMethod = () -> redirectTo(FacesUtil.ADD_MOVIE_URI);
     private RequiresLoginMethodNoParam<String> editMovieMethod = () -> redirectTo(FacesUtil.EDIT_MOVIE_URI);
 
+    private String filterType = "none";
+    private String filterValue = "";
 
     @PostConstruct
     public void init() {
@@ -37,5 +39,26 @@ public class IndexBean {
 
     public String getMovieInfoURL(int movieID) {
         return FacesUtil.buildMovieInfoURL(movieID);
+    }
+
+    public String filter() {
+    //todo
+        return "index.html";
+    }
+
+    public String getFilterValue() {
+        return filterValue;
+    }
+
+    public void setFilterValue(String filterValue) {
+        this.filterValue = filterValue;
+    }
+
+    public String getFilterType() {
+        return filterType;
+    }
+
+    public void setFilterType(String filterType) {
+        this.filterType = filterType;
     }
 }

@@ -5,20 +5,50 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<ui:include src="WEB-INF/control_panel.xhtml"/>
-<f:view>
-    <h:panelGrid columns="1">
-        <h:outputLabel value="#{movieInfoBean.title}"/>
-        <h:outputLabel value="#{movieInfoBean.releaseDate}"/>
-        <h:outputLabel value="#{movieInfoBean.synopsis}"/>
-        <h:outputLabel value="#{movieInfoBean.genre}"/>
-        <h:outputLabel value="#{movieInfoBean.rating}"/>
-        <h:outputLabel value="#{movieInfoBean.averageRating}"/>
-    </h:panelGrid>
-    <h:form>
-        <h:outputLink value="#{movieInfoBean.editMovieURL}">
-            Update Movie
-        </h:outputLink>
-    </h:form>
-</f:view>
+<h:head>
+    <title>Movie Details</title>
+    <h:outputStylesheet name="bootstrap.css" library="css" />
+</h:head>
+<h:body>
+    <ui:include src="WEB-INF/control_panel.xhtml"/>
+    <div class="container">
+        <div class="row">
+            <div style="height: 100%;">
+                <h:outputText styleClass="text-primary" style="font-size: 18px" value="#{movieInfoBean.title}"></h:outputText>
+                <br/>
+                <h:outputText value = "Thumbnail" height="300px" width="200px"/>
+            </div>
+            <div style="min-height: 300px; width: calc(100% - 200px); float: right;">
+                <div class="jumbotron jumbotron-fluid px-1 py-3">
+                    <div class="container">
+                        <h4 class="display-7">Score:
+                            <h:outputText value="#{movieInfoBean.averageRating}">
+                                <f:convertNumber pattern="#0.0" />
+                            </h:outputText> / 5
+                        </h4>
+                        <h:outputText value="#{movieInfoBean.releaseDate}" title="Release Date">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <hr/>
+                        <h:outputText class ="lead" value="#{movieInfoBean.synopsis}" title="Synopsis"/>
+                        <br/><br/>
+                        <h:outputText value="Genre: #{movieInfoBean.genre}" title="Genre"/>
+                        <br/>
+                        <h:outputText value="Rating: #{movieInfoBean.rating}" title="Rating"/>
+                    </div>
+                </div>
+
+                <h:panelGroup  styleClass="form-group" >
+                    <h:panelGrid columns="2" style="width: 100%;">
+                        <h:outputLink styleClass="form-control btn btn-md btn-primary"
+                                      value="#{movieInfoBean.editMovieURL}">Update Movie
+                        </h:outputLink>
+                        <h:outputLink styleClass="form-control btn btn-md btn-danger" >Delete Movie
+                        </h:outputLink>
+                    </h:panelGrid>
+                </h:panelGroup>
+            </div>
+        </div>
+    </div>
+</h:body>
 </html>
