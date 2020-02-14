@@ -11,7 +11,7 @@ import javax.persistence.PersistenceException;
 import java.io.Serializable;
 
 @ManagedBean
-@SessionScoped
+//@SessionScoped
 public class EditMovieBean extends ManageMovieBean implements Serializable {
 
     @Override
@@ -21,14 +21,18 @@ public class EditMovieBean extends ManageMovieBean implements Serializable {
     }
 
     private void tryFill() {
-        String idString = FacesUtil.getRequestParameterValue(FacesUtil.MOVIE_ID_PARAM);
         try {
+            String idString = FacesUtil.getRequestParameterValue(FacesUtil.MOVIE_ID_PARAM);
+
             Integer id = Integer.valueOf(idString);
             MovieData movieData = MovieConverter.toDataForEdit(id);
             loadMovieToUpdate(movieData);
         }
+        catch (NullPointerException e) {
+            System.out.println("EditMovieBean.tryFill" + e.toString());
+        }
         catch (NumberFormatException | PersistenceException e) {
-            FacesUtil.redirect(FacesUtil.INDEX_URI);
+//            FacesUtil.redirect(FacesUtil.INDEX_URI);
         }
     }
 
@@ -48,7 +52,7 @@ public class EditMovieBean extends ManageMovieBean implements Serializable {
         DefaultAppController
                 .getInstance()
                 .updateMovie(MovieConverter.toMovieFromData(movieData));
-        reset();
+//        reset();
         FacesUtil.redirect(FacesUtil.INDEX_URI);
     }
 

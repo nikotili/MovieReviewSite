@@ -17,7 +17,7 @@ import java.util.Set;
 public class MovieInfoBean implements Serializable {
     private MovieData movieData = MovieData.DUMMY;
 
-    private RequiresLoginMethodNoParam<String> editMovieMethod = this::getEditMovieURL;
+    private RequiresLoginMethodNoParam<String> editMovieMethod = this::redirectToEditMovieURL;
 
     @PostConstruct
     public void init() {
@@ -25,13 +25,15 @@ public class MovieInfoBean implements Serializable {
     }
 
     private void tryFill() {
-        String idString = FacesUtil.getRequestParameterValue(FacesUtil.MOVIE_ID_PARAM);
         try {
+            String idString = FacesUtil.getRequestParameterValue(FacesUtil.MOVIE_ID_PARAM);
             Integer id = Integer.valueOf(idString);
             this.movieData = MovieConverter.toDataForInfo(id);
         }
         catch (NumberFormatException | PersistenceException e) {
             FacesUtil.redirect(FacesUtil.INDEX_URI);
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 
@@ -91,6 +93,16 @@ public class MovieInfoBean implements Serializable {
     public String getEditMovieURL() {
         return FacesUtil.buildEditMovieURL(movieData.getID());
     }
+
+    private String redirectToEditMovieURL(){
+        return redirectTo(getEditMovieURL());
+    }
+
+    private String redirectTo(String url) {
+        FacesUtil.redirect(url);
+        return null;
+    }
+
 
     public RequiresLoginMethodNoParam<String> getEditMovieMethod() {
         return editMovieMethod;
