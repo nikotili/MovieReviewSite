@@ -40,7 +40,8 @@ public class MovieConverter {
 
     private static MovieData toDataForManage(Integer movieID) {
         Movie movie = DefaultAppController.getInstance().getMovieByPK(movieID);
-
+        if (movie == null)
+            return null;
         return new MovieData.Builder(movie.getId(), movie.getTitle())
                 .setReleaseDate(movie.getReleaseDate())
                 .setSynopsis(movie.getSynopsis())
@@ -51,6 +52,8 @@ public class MovieConverter {
 
     public static MovieData toDataForInfo(Integer movieID) {
         Movie movie = DefaultAppController.getInstance().getMovieByPK(movieID);
+        if (movie == null)
+            return null;
         Set<DirectorData> directorDataSet = DirectorConverter.toDataSet(movie.getDirectors());
         return new MovieData.Builder(movie.getId(), movie.getTitle())
                 .setReleaseDate(movie.getReleaseDate())
