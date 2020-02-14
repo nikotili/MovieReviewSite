@@ -11,7 +11,7 @@ import javax.persistence.PersistenceException;
 import java.io.Serializable;
 
 @ManagedBean
-//@SessionScoped
+@SessionScoped
 public class EditMovieBean extends ManageMovieBean implements Serializable {
 
     @Override
