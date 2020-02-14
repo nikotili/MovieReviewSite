@@ -15,7 +15,7 @@ import java.util.Set;
 @ManagedBean
 @ViewScoped
 public class MovieInfoBean implements Serializable {
-    private MovieData movieData;
+    private MovieData movieData = MovieData.DUMMY;
 
     private RequiresLoginMethodNoParam<String> editMovieMethod = this::getEditMovieURL;
 

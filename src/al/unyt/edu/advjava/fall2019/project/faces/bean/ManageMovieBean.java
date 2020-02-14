@@ -2,15 +2,13 @@ package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
 import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController;
 import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
-import al.unyt.edu.advjava.fall2019.project.faces.method.RequiresLoginMethod;
-import al.unyt.edu.advjava.fall2019.project.faces.method.RequiresLoginMethodNoParam;
 
 import java.util.Collection;
 import java.util.Map;
 
 public abstract class ManageMovieBean extends RequiresLoginBean {
 
-    private MovieData movieData = new MovieData();
+    private MovieData movieData = MovieData.DUMMY;
     private Collection<String> genres = DefaultAppController.getInstance().getMovieGenres();
     private Map<String, String> ratingsMap = DefaultAppController.getInstance().getMovieRatings();
 
@@ -22,11 +20,11 @@ public abstract class ManageMovieBean extends RequiresLoginBean {
         return ratingsMap;
     }
 
-    protected int getID() {
+    public Integer getId() {
         return this.movieData.getID();
     }
 
-    protected void setID(int ID) {
+    public void setId(Integer ID) {
         this.movieData.setId(ID);
     }
 

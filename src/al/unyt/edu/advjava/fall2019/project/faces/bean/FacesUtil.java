@@ -41,11 +41,6 @@ public class FacesUtil {
         redirect(url, null, null);
     }
 
-//    public static void displayMessage(String componentID, String message) {
-//        getFacesContextInstance()
-//                .addMessage(componentID, new FacesMessage(message));
-//    }
-
     public static java.sql.Date toSqlDate(java.util.Date date) {
         return new java.sql.Date(date.getTime());
     }
@@ -68,10 +63,6 @@ public class FacesUtil {
 
     public static HttpServletRequest getCurrentRequest() {
         return (HttpServletRequest) getFacesExternalContext().getRequest();
-    }
-
-    public static void removeFromSession(String key) {
-        getFacesExternalContext().getSessionMap().remove(key);
     }
 
     public static String getRequestParameterValue(String param) {

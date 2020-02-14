@@ -1,6 +1,7 @@
 package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
 import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController;
+import al.unyt.edu.advjava.fall2019.project.core.manager.session.DefaultSessionManager;
 import al.unyt.edu.advjava.fall2019.project.faces.converter.MovieConverter;
 import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
 
@@ -32,7 +33,7 @@ public class EditMovieBean extends ManageMovieBean implements Serializable {
     }
 
     private void loadMovieToUpdate(MovieData movie) {
-        setID(movie.getID());
+        setId(movie.getID());
         setTitle(movie.getTitle());
         setReleaseDate(movie.getReleaseDate());
         setSynopsis(movie.getSynopsis());
@@ -54,7 +55,7 @@ public class EditMovieBean extends ManageMovieBean implements Serializable {
 
     //fixme: there should be another way...
     private void reset() {
-        FacesUtil.removeFromSession("editMovieBean");
+        DefaultSessionManager.getInstance().removeObjectFromSession("editMovieBean");
     }
 
 }

@@ -5,7 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class MovieData {
-    private int id;
+    public static final MovieData DUMMY = new MovieData();
+    private Integer id = -100;
     private String title;
     private Date releaseDate;
     private String synopsis;
@@ -17,7 +18,7 @@ public class MovieData {
 
 
     public static class Builder {
-        private int id;
+        private Integer id = -100;
         private String title;
         private Date releaseDate = null;
         private String synopsis = "";
@@ -26,12 +27,12 @@ public class MovieData {
         private Set<DirectorData> directors = new HashSet<>();
         double averageRating = 0.0D;
 
-        public Builder(int id, String title) {
+        public Builder(Integer id, String title) {
             this.id = id;
             this.title = title;
         }
 
-        public Builder setId(int id) {
+        public Builder setId(Integer id) {
             this.id = id;
             return this;
         }
@@ -76,7 +77,7 @@ public class MovieData {
         }
     }
 
-    private MovieData(int id, String title, Date releaseDate, String synopsis, String genre, String rating, Set<DirectorData> directors, double averageRating) {
+    private MovieData(Integer id, String title, Date releaseDate, String synopsis, String genre, String rating, Set<DirectorData> directors, double averageRating) {
         this.id = id;
         this.title = title;
         this.releaseDate = releaseDate;
@@ -87,13 +88,13 @@ public class MovieData {
         this.averageRating = averageRating;
     }
 
-    public MovieData(){}
+    private MovieData(){}
 
-    public int getID() {
+    public Integer getID() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
