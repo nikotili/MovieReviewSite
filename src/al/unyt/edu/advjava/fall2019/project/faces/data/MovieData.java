@@ -92,10 +92,6 @@ public class MovieData {
 
     public MovieData(){}
 
-    public Integer getID() {
-        return id;
-    }
-
     public void setId(Integer id) {
         this.id = id;
     }

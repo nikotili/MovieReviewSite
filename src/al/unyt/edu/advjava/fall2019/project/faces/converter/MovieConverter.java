@@ -68,7 +68,7 @@ public class MovieConverter {
 
     public static Movie toMovieFromData(MovieData movieData) {
         Movie movie = new Movie();
-        movie.setId(movieData.getID());
+        movie.setId(movieData.getId());
         movie.setTitle(movieData.getTitle());
         movie.setReleaseDate(FacesUtil.toSqlDate(movieData.getReleaseDate()));
         movie.setSynopsis(movieData.getSynopsis());

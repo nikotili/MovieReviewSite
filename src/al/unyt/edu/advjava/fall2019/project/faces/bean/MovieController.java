@@ -138,7 +138,7 @@ public class MovieController {
 
     public void saveEdit() {
         final MovieData movieData = movieDataForEdit;
-        if (movieDataForEdit.getID() != -100) {
+        if (movieDataForEdit.getId() != -100) {
             DefaultAppController
                     .getInstance()
                     .updateMovie(MovieConverter.toMovieFromData(movieData));

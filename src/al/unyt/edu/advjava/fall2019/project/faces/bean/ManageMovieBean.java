@@ -21,7 +21,7 @@ public abstract class ManageMovieBean extends RequiresLoginBean {
     }
 
     public Integer getId() {
-        return this.movieData.getID();
+        return this.movieData.getId();
     }
 
     public void setId(Integer ID) {
