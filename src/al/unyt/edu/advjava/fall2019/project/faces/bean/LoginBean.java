@@ -24,8 +24,12 @@ public class LoginBean {
     }
 
     private void checkRequestParameterValueForErrorMessage() {
-        String errorParam = FacesUtil.getRequestParameterValue(FacesUtil.LOGIN_ERROR_PARAM);
-        setRedirectedForValidation(errorParam !=null && errorParam.equals(FacesUtil.LOGIN_ERROR_ARG));
+        try {
+            String errorParam = FacesUtil.getRequestParameterValue(FacesUtil.LOGIN_ERROR_PARAM);
+            setRedirectedForValidation(errorParam !=null && errorParam.equals(FacesUtil.LOGIN_ERROR_ARG));
+        } catch (NullPointerException e) {
+            setRedirectedForValidation(false);
+        }
     }
 
     public String getEmail() {
