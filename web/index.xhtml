@@ -43,8 +43,9 @@
             </h:column>
             <h:column>
                 <f:facet name="header">Title</f:facet>
-                <h:commandLink value="#{movie.title}" action="#{indexBean.editMovieMethod.call(movie.ID)}"> </h:commandLink>
-            </h:column>
+                <h:outputLink value="#{indexBean.getMovieInfoURL(movie.ID)}">
+                    #{movie.title}
+                </h:outputLink>         </h:column>
             <h:column>
                 <f:facet name="header">Rating</f:facet>
                 #{movie.averageRating}

@@ -41,9 +41,7 @@
                 <h:panelGroup  styleClass="form-group" >
                     <h:panelGrid columns="2" style="width: 100%;">
                         <h:form>
-                            <h:outputLink styleClass="form-control btn btn-md btn-primary"
-                                          value="#{movieInfoBean.editMovieURL}">Update Movie
-                            </h:outputLink>
+                            <h:commandLink styleClass="form-control btn btn-md btn-primary" value="Update Movie" action="#{movieInfoBean.editMovieMethod.call}"> </h:commandLink>
                             <h:outputLink styleClass="form-control btn btn-md btn-danger" >Delete Movie
                             </h:outputLink>
                         </h:form>

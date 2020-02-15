@@ -21,7 +21,6 @@ public class EditMovieBean extends ManageMovieBean implements Serializable {
 
     private void tryFill() {
         String idString = FacesUtil.getRequestParameterValue(FacesUtil.MOVIE_ID_PARAM);
-
         try {
             Integer id = Integer.valueOf(idString);
             MovieData movieData = MovieConverter.toDataForEdit(id);

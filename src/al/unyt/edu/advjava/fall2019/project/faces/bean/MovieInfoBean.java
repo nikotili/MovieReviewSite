@@ -3,6 +3,7 @@ package al.unyt.edu.advjava.fall2019.project.faces.bean;
 import al.unyt.edu.advjava.fall2019.project.faces.converter.MovieConverter;
 import al.unyt.edu.advjava.fall2019.project.faces.data.DirectorData;
 import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
+import al.unyt.edu.advjava.fall2019.project.faces.method.RequiresLoginMethodNoParam;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -15,6 +16,8 @@ import java.util.Set;
 @ViewScoped
 public class MovieInfoBean implements Serializable {
     private MovieData movieData;
+
+    private RequiresLoginMethodNoParam<String> editMovieMethod = this::getEditMovieURL;
 
     @PostConstruct
     public void init() {
@@ -87,5 +90,13 @@ public class MovieInfoBean implements Serializable {
 
     public String getEditMovieURL() {
         return FacesUtil.buildEditMovieURL(movieData.getID());
+    }
+
+    public RequiresLoginMethodNoParam<String> getEditMovieMethod() {
+        return editMovieMethod;
+    }
+
+    public void setEditMovieMethod(RequiresLoginMethodNoParam<String> editMovieMethod) {
+        this.editMovieMethod = editMovieMethod;
     }
 }
