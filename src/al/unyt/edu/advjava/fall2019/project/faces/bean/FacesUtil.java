@@ -13,6 +13,8 @@ public class FacesUtil {
     public static final String EDIT_MOVIE_URI = "edit-movie.xhtml";
     public static final String MOVIES_URI = "movies.xhtml";
     public static final String MOVIE_ID_PARAM = "id";
+    public static final String LOGIN_ERROR_PARAM = "loginerr";
+    public static final String LOGIN_ERROR_ARG = "true";
     public static final String MOVIE_URI_WITH_PARAM = MOVIES_URI + '?' + MOVIE_ID_PARAM + '=';
     public static final String EDIT_MOVIE_URI_WITH_PARAM = EDIT_MOVIE_URI + '?' + MOVIE_ID_PARAM + '=';
 
@@ -21,14 +23,22 @@ public class FacesUtil {
         throw new IllegalAccessException();
     }
 
-    public static void redirect(String url) {
+    public static void redirect(String url, String argumentName, String argumentValue) {
+        String urlArguments = "?faces-redirect=true";
+        if(argumentName != null && argumentValue != null) {
+            urlArguments += "&" + argumentName + "=" + argumentValue;
+        }
         try {
             getFacesExternalContext()
-                    .redirect(url + "?faces-redirect=true");
+                    .redirect(url + urlArguments);
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void redirect(String url) {
+        redirect(url, null, null);
     }
 
 //    public static void displayMessage(String componentID, String message) {

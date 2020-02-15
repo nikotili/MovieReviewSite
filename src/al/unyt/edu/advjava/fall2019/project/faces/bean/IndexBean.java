@@ -2,6 +2,7 @@ package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
 import al.unyt.edu.advjava.fall2019.project.faces.converter.MovieConverter;
 import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
+import al.unyt.edu.advjava.fall2019.project.faces.method.RequiresLoginMethod;
 import al.unyt.edu.advjava.fall2019.project.faces.method.RequiresLoginMethodNoParam;
 
 import javax.annotation.PostConstruct;
@@ -14,7 +15,7 @@ import java.util.Collection;
 public class IndexBean {
     private Collection<MovieData> movieList;
     private RequiresLoginMethodNoParam<String> addNewMovieMethod = () -> redirectTo(FacesUtil.ADD_MOVIE_URI);
-    private RequiresLoginMethodNoParam<String> editMovieMethod = () -> redirectTo(FacesUtil.EDIT_MOVIE_URI);
+    private RequiresLoginMethod<Integer, String> editMovieMethod = movieID -> getMovieInfoURL(movieID);
 
     private String filterType = "none";
     private String filterValue = "";
@@ -60,5 +61,13 @@ public class IndexBean {
 
     public void setFilterType(String filterType) {
         this.filterType = filterType;
+    }
+
+    public RequiresLoginMethod<Integer, String> getEditMovieMethod() {
+        return editMovieMethod;
+    }
+
+    public void setEditMovieMethod(RequiresLoginMethod<Integer, String> editMovieMethod) {
+        this.editMovieMethod = editMovieMethod;
     }
 }

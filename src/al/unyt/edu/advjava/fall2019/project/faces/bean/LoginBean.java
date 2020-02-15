@@ -12,11 +12,20 @@ public class LoginBean {
     private final DefaultSessionManager sessionManager = DefaultSessionManager.getInstance();
     private String email;
     private String password;
+    private boolean redirectedForValidation;
 
     @PostConstruct
     public void init() {
         if (sessionManager.hasLoggedUser())
             FacesUtil.redirect(FacesUtil.INDEX_URI);
+        else {
+            checkRequestParameterValueForErrorMessage();
+        }
+    }
+
+    private void checkRequestParameterValueForErrorMessage() {
+        String errorParam = FacesUtil.getRequestParameterValue(FacesUtil.LOGIN_ERROR_PARAM);
+        setRedirectedForValidation(errorParam !=null && errorParam.equals(FacesUtil.LOGIN_ERROR_ARG));
     }
 
     public String getEmail() {
@@ -48,5 +57,13 @@ public class LoginBean {
         catch (SecurityException e) {
 
         }
+    }
+
+    public boolean isRedirectedForValidation() {
+        return redirectedForValidation;
+    }
+
+    public void setRedirectedForValidation(boolean redirectedForValidation) {
+        this.redirectedForValidation = redirectedForValidation;
     }
 }

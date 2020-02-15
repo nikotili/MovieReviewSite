@@ -32,7 +32,7 @@
                 </h:form>
             </h:panelGroup>
             <h:panelGroup styleClass="form" style=" margin: auto; width: 100% !important">
-                <h:commandLink styleClass="btn btn-info btn-md form-control" value="Add a new movie" id="goToAddMovieLink" action="#{indexBean.addNewMovieMethod.call}"></h:commandLink>
+                <h:commandLink styleClass="btn btn-info btn-md form-control" value="Add a new movie" id="goToAddMovieLink" action="#{indexBean.addNewMovieMethod.call}"> </h:commandLink>
             </h:panelGroup>
         </h:panelGrid>
 
@@ -43,9 +43,7 @@
             </h:column>
             <h:column>
                 <f:facet name="header">Title</f:facet>
-                <h:outputLink value="#{indexBean.getMovieInfoURL(movie.ID)}">
-                    #{movie.title}
-                </h:outputLink>
+                <h:commandLink value="#{movie.title}" action="#{indexBean.editMovieMethod.call(movie.ID)}"> </h:commandLink>
             </h:column>
             <h:column>
                 <f:facet name="header">Rating</f:facet>

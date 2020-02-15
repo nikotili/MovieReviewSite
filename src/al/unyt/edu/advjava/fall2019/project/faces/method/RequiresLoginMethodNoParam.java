@@ -1,6 +1,7 @@
 package al.unyt.edu.advjava.fall2019.project.faces.method;
 
 import al.unyt.edu.advjava.fall2019.project.core.manager.session.DefaultSessionManager;
+import al.unyt.edu.advjava.fall2019.project.faces.bean.FacesUtil;
 
 
 /**
@@ -27,6 +28,7 @@ public interface RequiresLoginMethodNoParam<R> {
         if (DefaultSessionManager.getInstance().hasLoggedUser())
             return function();
         else
-            throw new SecurityException("No permission!");
+            FacesUtil.redirect(FacesUtil.LOGIN_URI, FacesUtil.LOGIN_ERROR_PARAM, FacesUtil.LOGIN_ERROR_ARG);
+        return null;
     }
 }

@@ -40,11 +40,13 @@
 
                 <h:panelGroup  styleClass="form-group" >
                     <h:panelGrid columns="2" style="width: 100%;">
-                        <h:outputLink styleClass="form-control btn btn-md btn-primary"
-                                      value="#{movieInfoBean.editMovieURL}">Update Movie
-                        </h:outputLink>
-                        <h:outputLink styleClass="form-control btn btn-md btn-danger" >Delete Movie
-                        </h:outputLink>
+                        <h:form>
+                            <h:outputLink styleClass="form-control btn btn-md btn-primary"
+                                          value="#{movieInfoBean.editMovieURL}">Update Movie
+                            </h:outputLink>
+                            <h:outputLink styleClass="form-control btn btn-md btn-danger" >Delete Movie
+                            </h:outputLink>
+                        </h:form>
                     </h:panelGrid>
                 </h:panelGroup>
             </div>
