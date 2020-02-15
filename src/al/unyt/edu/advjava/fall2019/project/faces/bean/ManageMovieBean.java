@@ -5,7 +5,7 @@ import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
 
 import java.util.Collection;
 import java.util.Map;
-
+@Deprecated
 public abstract class ManageMovieBean extends RequiresLoginBean {
 
     private MovieData movieData = MovieData.DUMMY;

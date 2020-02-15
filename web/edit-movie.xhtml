@@ -23,7 +23,7 @@
                         <h:outputText  styleClass="text-info" value="Title" />
                         <h:inputText styleClass="form-control"
                                      id="titleInputText"
-                                     value="#{editMovieBean.title}"
+                                     value="#{movieController.movieDataForEdit.title}"
                                      required="true"
                                      requiredMessage="Title is required!"
                                      validatorMessage="Max 30 chars">
@@ -37,7 +37,7 @@
                         <h:outputText styleClass="text-info" value="Release Date (yyyy-mm-dd)" />
                         <h:inputText styleClass="form-control"
                                      id="dateInputText"
-                                     value="#{editMovieBean.releaseDate}"
+                                     value="#{movieController.movieDataForEdit.releaseDate}"
                                      required="true"
                                      requiredMessage="Relase Date is required"
                                      converterMessage="Wrong date format">
@@ -55,7 +55,7 @@
                                          id="synopsisInputText"
                                          rows="10"
                                          cols="40"
-                                         value="#{editMovieBean.synopsis}"
+                                         value="#{movieController.movieDataForEdit.synopsis}"
                                          validatorMessage="Max 400 chars">
                             <f:validateLength for="synopsisInputText"
                                               maximum="400"/>
@@ -67,8 +67,8 @@
                         <h:outputText styleClass="text-info" value="Genre" />
                         <h:selectOneMenu styleClass="form-control"
                                          id="genreSelect"
-                                         value="#{editMovieBean.genre}">
-                            <f:selectItems value="#{editMovieBean.genres}"/>
+                                         value="#{movieController.movieDataForEdit.genre}">
+                            <f:selectItems value="#{movieController.genres}"/>
                         </h:selectOneMenu>
                         <h:message styleClass="alert alert-warning" style="padding: 8px; !important;" for="genreSelect"/>
                     </h:panelGroup>
@@ -77,15 +77,15 @@
                         <h:outputText styleClass="text-info" value="Rating" />
                         <h:selectOneMenu  styleClass="form-control"
                                           id="ratingSelect"
-                                          value="#{editMovieBean.rating}">
-                            <f:selectItems value="#{editMovieBean.ratingsMap}"/>
+                                          value="#{movieController.movieDataForEdit.rating}">
+                            <f:selectItems value="#{movieController.ratingsMap}"/>
                         </h:selectOneMenu>
 
                         <h:message styleClass="alert alert-warning" style="padding: 8px; !important;" for="ratingSelect"/>
                     </h:panelGroup>
                     <br/>
                     <br/>
-                    <h:commandButton  styleClass="btn btn-info btn-md" value="Add" id="addMovieButton" action="#{editMovieBean.saveAction}"/>
+                    <h:commandButton  styleClass="btn btn-info btn-md" value="Add" id="addMovieButton" action="#{movieController.saveEdit}"/>
                     <h:message styleClass="alert alert-warning" style="padding: 8px; !important;" for="addMovieButton"/>
                 </h:form>
             </h:panelGroup>

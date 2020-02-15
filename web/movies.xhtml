@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div style="height: 100%;">
-                <h:outputText styleClass="text-primary" style="font-size: 18px" value="#{movieInfoBean.title}"></h:outputText>
+                <h:outputText styleClass="text-primary" style="font-size: 18px" value="#{movieController.movieDataForInfo.title}"></h:outputText>
                 <br/>
                 <h:outputText value = "Thumbnail" height="300px" width="200px"/>
             </div>
@@ -22,26 +22,26 @@
                 <div class="jumbotron jumbotron-fluid px-1 py-3">
                     <div class="container">
                         <h4 class="display-7">Score:
-                            <h:outputText value="#{movieInfoBean.averageRating}">
+                            <h:outputText value="#{movieController.movieDataForInfo.averageRating}">
                                 <f:convertNumber pattern="#0.0" />
                             </h:outputText> / 5
                         </h4>
-                        <h:outputText value="#{movieInfoBean.releaseDate}" title="Release Date">
+                        <h:outputText value="#{movieController.movieDataForInfo.releaseDate}" title="Release Date">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:outputText>
                         <hr/>
-                        <h:outputText class ="lead" value="#{movieInfoBean.synopsis}" title="Synopsis"/>
+                        <h:outputText class ="lead" value="#{movieController.movieDataForInfo.synopsis}" title="Synopsis"/>
                         <br/><br/>
-                        <h:outputText value="Genre: #{movieInfoBean.genre}" title="Genre"/>
+                        <h:outputText value="Genre: #{movieController.movieDataForInfo.genre}" title="Genre"/>
                         <br/>
-                        <h:outputText value="Rating: #{movieInfoBean.rating}" title="Rating"/>
+                        <h:outputText value="Rating: #{movieController.movieDataForInfo.rating}" title="Rating"/>
                     </div>
                 </div>
 
                 <h:panelGroup  styleClass="form-group" >
                     <h:panelGrid columns="2" style="width: 100%;">
                         <h:form>
-                            <h:commandLink styleClass="form-control btn btn-md btn-primary" value="Update Movie" action="#{movieInfoBean.editMovieMethod.call}"> </h:commandLink>
+                            <h:commandLink styleClass="form-control btn btn-md btn-primary" value="Update Movie" action="#{movieController.editMovieMethod.call(movieController.movieInContext.id)}"> </h:commandLink>
                             <h:outputLink styleClass="form-control btn btn-md btn-danger" >Delete Movie
                             </h:outputLink>
                         </h:form>

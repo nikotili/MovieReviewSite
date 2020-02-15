@@ -15,7 +15,9 @@ public class MovieData {
     private Set<DirectorData> directors;
     double averageRating;
 
-
+    public Integer getId() {
+        return id;
+    }
 
     public static class Builder {
         private Integer id = -100;
@@ -88,7 +90,7 @@ public class MovieData {
         this.averageRating = averageRating;
     }
 
-    private MovieData(){}
+    public MovieData(){}
 
     public Integer getID() {
         return id;

@@ -4,7 +4,7 @@ import al.unyt.edu.advjava.fall2019.project.core.manager.session.DefaultSessionM
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-
+@Deprecated
 @ManagedBean
 public class RequiresLoginBean {
 
