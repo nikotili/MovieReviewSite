@@ -1,5 +1,6 @@
 package al.unyt.edu.advjava.fall2019.project.core.manager.session;
 
+import al.unyt.edu.advjava.fall2019.project.faces.bean.MovieController;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 
 import javax.faces.context.ExternalContext;
@@ -32,6 +33,10 @@ public final class DefaultSessionManager implements SessionManager {
 
     public <T> T getObjectFromSession(Class<T> oClass, String key) {
         return (T) getSession(false).getAttribute(key);
+    }
+
+    public MovieController getCurrentMovieController() {
+        return getObjectFromSession(MovieController.class, "movieController");
     }
 
     public void createSession(MovieGoer user) {

@@ -7,42 +7,48 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>Movie Details</title>
-    <h:outputStylesheet name="bootstrap.css" library="css" />
+    <h:outputStylesheet name="bootstrap.css" library="css"/>
 </h:head>
 <h:body>
     <ui:include src="WEB-INF/control_panel.xhtml"/>
     <div class="container">
         <div class="row">
             <div style="height: 100%;">
-                <h:outputText styleClass="text-primary" style="font-size: 18px" value="#{movieController.movieDataForInfo.title}"/>
+                <h:outputText styleClass="text-primary" style="font-size: 18px"
+                              value="#{movieInfoBean.movieController.movieDataInContext.title}"/>
                 <br/>
-                <h:outputText value = "Thumbnail" height="300px" width="200px"/>
+                <h:outputText value="Thumbnail" height="300px" width="200px"/>
             </div>
             <div style="min-height: 300px; width: calc(100% - 200px); float: right;">
                 <div class="jumbotron jumbotron-fluid px-1 py-3">
                     <div class="container">
                         <h4 class="display-7">Score:
-                            <h:outputText value="#{movieController.movieDataForInfo.averageRating}">
-                                <f:convertNumber pattern="#0.0" />
+                            <h:outputText value="#{movieInfoBean.movieController.movieDataInContext.averageRating}">
+                                <f:convertNumber pattern="#0.0"/>
                             </h:outputText> / 5
                         </h4>
-                        <h:outputText value="#{movieController.movieDataForInfo.releaseDate}" title="Release Date">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        <h:outputText value="#{movieInfoBean.movieController.movieDataInContext.releaseDate}"
+                                      title="Release Date">
+                            <f:convertDateTime pattern="MM/dd/yyyy"/>
                         </h:outputText>
                         <hr/>
-                        <h:outputText class ="lead" value="#{movieController.movieDataForInfo.synopsis}" title="Synopsis"/>
+                        <h:outputText class="lead" value="#{movieInfoBean.movieController.movieDataInContext.synopsis}"
+                                      title="Synopsis"/>
                         <br/><br/>
-                        <h:outputText value="Genre: #{movieController.movieDataForInfo.genre}" title="Genre"/>
+                        <h:outputText value="Genre: #{movieInfoBean.movieController.movieDataInContext.genre}"
+                                      title="Genre"/>
                         <br/>
-                        <h:outputText value="Rating: #{movieController.movieDataForInfo.rating}" title="Rating"/>
+                        <h:outputText value="Rating: #{movieInfoBean.movieController.movieDataInContext.rating}"
+                                      title="Rating"/>
                     </div>
                 </div>
 
-                <h:panelGroup  styleClass="form-group" >
+                <h:panelGroup styleClass="form-group">
                     <h:panelGrid columns="2" style="width: 100%;">
                         <h:form>
-                            <h:commandLink styleClass="form-control btn btn-md btn-primary" value="Update Movie" action="#{movieController.editMovieMethod.call(movieController.movieInContext.id)}"> </h:commandLink>
-                            <h:outputLink styleClass="form-control btn btn-md btn-danger" >Delete Movie
+                            <h:commandLink styleClass="form-control btn btn-md btn-primary" value="Update Movie"
+                                           action="#{movieInfoBean.movieController.editMovieMethod.call(movieController.movieDataInContext.id)}"> </h:commandLink>
+                            <h:outputLink styleClass="form-control btn btn-md btn-danger">Delete Movie
                             </h:outputLink>
                         </h:form>
                     </h:panelGrid>

@@ -4,21 +4,19 @@ import al.unyt.edu.advjava.fall2019.project.core.manager.session.DefaultSessionM
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean
-public class RequiresLoginBean {
-
+@RequestScoped
+public class IndexBean {
     private MovieController movieController;
 
+
     @PostConstruct
-    public void init() throws IllegalStateException {
-
-        if (!DefaultSessionManager.getInstance().hasLoggedUser()) {
-            FacesUtil.redirect(FacesUtil.LOGIN_URI);
-            throw new IllegalStateException("Redirected!");
-        }
-
-        movieController = DefaultSessionManager.getInstance().getCurrentMovieController();
+    public void init() {
+        movieController = DefaultSessionManager
+                .getInstance()
+                .getCurrentMovieController();
     }
 
     public MovieController getMovieController() {

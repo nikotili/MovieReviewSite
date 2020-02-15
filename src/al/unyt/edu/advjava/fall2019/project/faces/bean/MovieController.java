@@ -5,7 +5,6 @@ import al.unyt.edu.advjava.fall2019.project.faces.converter.MovieConverter;
 import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
 import al.unyt.edu.advjava.fall2019.project.faces.method.RequiresLoginMethod;
 import al.unyt.edu.advjava.fall2019.project.faces.method.RequiresLoginMethodNoParam;
-import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -17,13 +16,13 @@ import java.util.Map;
 @SessionScoped
 public class MovieController {
     private Collection<MovieData> movieList;
-    private MovieData movieDataForInfo = MovieData.DUMMY;
-    private MovieData movieDataForEdit = new MovieData();
-    private Movie movieInContext = new Movie();
+    private MovieData movieDataInContext = new MovieData();
     private RequiresLoginMethodNoParam<String> addNewMovieMethod = () -> redirectTo(FacesUtil.ADD_MOVIE_URI);
     private RequiresLoginMethod<Integer, String> editMovieMethod = this::editMovie;
     private Collection<String> genres = DefaultAppController.getInstance().getMovieGenres();
     private Map<String, String> ratingsMap = DefaultAppController.getInstance().getMovieRatings();
+
+    private boolean editMode = false;
 
     private String selectedFilterType = MovieFilter.NO_FILTER;
     private String filterUserInput = "";
@@ -53,24 +52,16 @@ public class MovieController {
         this.ratingsMap = ratingsMap;
     }
 
-    public MovieData getMovieDataForInfo() {
-        return movieDataForInfo;
-    }
-
-    public void setMovieDataForInfo(MovieData movieDataForInfo) {
-        this.movieDataForInfo = movieDataForInfo;
-    }
-
-    public MovieData getMovieDataForEdit() {
-        return movieDataForEdit;
-    }
-
-    public void setMovieDataForEdit(MovieData movieDataForEdit) {
-        this.movieDataForEdit = movieDataForEdit;
-    }
-
     public Collection<MovieData> getMovieList() {
         return movieList;
+    }
+
+    public MovieData getMovieDataInContext() {
+        return movieDataInContext;
+    }
+
+    public void setMovieDataInContext(MovieData movieDataInContext) {
+        this.movieDataInContext = movieDataInContext;
     }
 
     public RequiresLoginMethodNoParam<String> getAddNewMovieMethod() {
@@ -81,28 +72,24 @@ public class MovieController {
         return editMovieMethod;
     }
 
-    public void setEditMovieMethod(RequiresLoginMethod<Integer, String> editMovieMethod) {
-        this.editMovieMethod = editMovieMethod;
-    }
-
-    public Movie getMovieInContext() {
-        return movieInContext;
-    }
-
-    public void setMovieInContext(Movie movieInContext) {
-        this.movieInContext = movieInContext;
-    }
-
     public String displayInfoForMovie(Integer movieID) {
-        movieInContext = DefaultAppController.getInstance().getMovieByPK(movieID);
-        movieDataForInfo = MovieConverter.toDataForInfo(movieID);
-        return FacesUtil.MOVIES_URI;
+        movieDataInContext = MovieConverter.toDataForInfo(movieID);
+        editMode = false;
+        return redirectTo(FacesUtil.MOVIES_URI);
     }
 
     private String editMovie(Integer movieID) {
-        movieInContext = DefaultAppController.getInstance().getMovieByPK(movieID);
-        movieDataForEdit = MovieConverter.toDataForEdit(movieID);
-        return FacesUtil.EDIT_MOVIE_URI;
+        movieDataInContext = MovieConverter.toDataForEdit(movieID);
+        editMode = true;
+        return redirectTo(FacesUtil.EDIT_MOVIE_URI);
+    }
+
+    public boolean isEditMode() {
+        return editMode;
+    }
+
+    public void setEditMode(boolean editMode) {
+        this.editMode = editMode;
     }
 
     private String redirectTo(String url) {
@@ -110,14 +97,10 @@ public class MovieController {
         return null;
     }
 
-    public String getMovieInfoURL(int movieID) {
-        return FacesUtil.buildMovieInfoURL(movieID);
-    }
-
     public String filter() {
         loadData();
         this.movieList = new MovieFilter(getSelectedFilterType(), getFilterUserInput(), getMovieList()).getFilteredMovies();
-        return "index.html";
+        return FacesUtil.INDEX_URI;
     }
 
     public String getFilterUserInput() {
@@ -137,16 +120,19 @@ public class MovieController {
     }
 
     public void saveEdit() {
-        final MovieData movieData = movieDataForEdit;
-        if (movieDataForEdit.getId() != -100) {
+        if (movieDataInContext.getId() != -100) {
             DefaultAppController
                     .getInstance()
-                    .updateMovie(MovieConverter.toMovieFromData(movieData));
+                    .updateMovie(MovieConverter.toMovieFromData(movieDataInContext));
         }
-        movieDataForEdit = new MovieData();
-        movieInContext = new Movie();
-        movieList = MovieConverter.allMoviesToDataForIndex();
+        reset();
         FacesUtil.redirect(FacesUtil.INDEX_URI);
+    }
+
+    private void reset() {
+        movieDataInContext = new MovieData();
+        movieList = MovieConverter.allMoviesToDataForIndex();
+        editMode = false;
     }
 
     public String getTop10FilterValue() {
