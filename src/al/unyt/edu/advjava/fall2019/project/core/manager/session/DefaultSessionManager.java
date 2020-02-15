@@ -22,6 +22,18 @@ public final class DefaultSessionManager implements SessionManager {
     }
 
 
+    public void addObjectToSession(String key, Object o) {
+        getSession(false).setAttribute(key, o);
+    }
+
+    public void removeObjectFromSession(String key) {
+        getSession(false).removeAttribute(key);
+    }
+
+    public <T> T getObjectFromSession(Class<T> oClass, String key) {
+        return (T) getSession(false).getAttribute(key);
+    }
+
     public void createSession(MovieGoer user) {
 
         final HttpSession session = getSession(true);
