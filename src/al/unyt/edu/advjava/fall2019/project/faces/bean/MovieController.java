@@ -25,11 +25,15 @@ public class MovieController {
     private Collection<String> genres = DefaultAppController.getInstance().getMovieGenres();
     private Map<String, String> ratingsMap = DefaultAppController.getInstance().getMovieRatings();
 
-    private String filterType = "none";
-    private String filterValue = "";
+    private String selectedFilterType = MovieFilter.NO_FILTER;
+    private String filterUserInput = "";
 
     @PostConstruct
     public void init() {
+        loadData();
+    }
+
+    private void loadData() {
         movieList = MovieConverter.allMoviesToDataForIndex();
     }
 
@@ -111,24 +115,25 @@ public class MovieController {
     }
 
     public String filter() {
-    //todo
+        loadData();
+        this.movieList = new MovieFilter(getSelectedFilterType(), getFilterUserInput(), getMovieList()).getFilteredMovies();
         return "index.html";
     }
 
-    public String getFilterValue() {
-        return filterValue;
+    public String getFilterUserInput() {
+        return filterUserInput;
     }
 
-    public void setFilterValue(String filterValue) {
-        this.filterValue = filterValue;
+    public void setFilterUserInput(String filterUserInput) {
+        this.filterUserInput = filterUserInput;
     }
 
-    public String getFilterType() {
-        return filterType;
+    public String getSelectedFilterType() {
+        return selectedFilterType;
     }
 
-    public void setFilterType(String filterType) {
-        this.filterType = filterType;
+    public void setSelectedFilterType(String selectedFilterType) {
+        this.selectedFilterType = selectedFilterType;
     }
 
     public void saveEdit() {
@@ -142,5 +147,29 @@ public class MovieController {
         movieInContext = new Movie();
         movieList = MovieConverter.allMoviesToDataForIndex();
         FacesUtil.redirect(FacesUtil.INDEX_URI);
+    }
+
+    public String getTop10FilterValue() {
+        return MovieFilter.TOP_10_MOVIES;
+    }
+
+    public String getRatingRangeFilterValue() {
+        return MovieFilter.RATING_RANGE;
+    }
+
+    public String getGenreFilterValue() {
+        return MovieFilter.GENRE;
+    }
+
+    public String getDirectorFilterValue() {
+        return MovieFilter.DIRECTOR;
+    }
+
+    public String getTitleFilterValue() {
+        return MovieFilter.TITLE;
+    }
+
+    public String getNoFilterValue() {
+        return MovieFilter.NO_FILTER;
     }
 }

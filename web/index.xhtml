@@ -18,15 +18,15 @@
                     <h:panelGrid columns="4" style="width: 100%;">
 
                         <h:outputText styleClass="btn btn-outline-success w-100 text-left text-info pt-5" style="font-size: 20px;" value="Filters:"/>
-                        <h:selectOneMenu class="form-control" value = "#{movieController.filterType}" style="margin-bottom: 10px;">
-                            <f:selectItem itemValue = "none" itemLabel = "No Filter" />
-                            <f:selectItem itemValue = "title" itemLabel = "Title" />
-                            <f:selectItem itemValue = "director" itemLabel = "Director" />
-                            <f:selectItem itemValue = "genre" itemLabel = "Genre" />
-                            <f:selectItem itemValue = "rating" itemLabel = "Rating Range" />
-                            <f:selectItem itemValue = "top" itemLabel = "Top 10 Movies" />
+                        <h:selectOneMenu class="form-control" value = "#{movieController.selectedFilterType}" style="margin-bottom: 10px;">
+                            <f:selectItem itemValue = "#{movieController.noFilterValue}" itemLabel = "No Filter" />
+                            <f:selectItem itemValue = "#{movieController.titleFilterValue}" itemLabel = "Title" />
+                            <f:selectItem itemValue = "#{movieController.directorFilterValue}" itemLabel = "Director" />
+                            <f:selectItem itemValue = "#{movieController.genreFilterValue}" itemLabel = "Genre" />
+                            <f:selectItem itemValue = "#{movieController.ratingRangeFilterValue}" itemLabel = "Rating Range" />
+                            <f:selectItem itemValue = "#{movieController.top10FilterValue}" itemLabel = "Top 10 Movies" />
                         </h:selectOneMenu>
-                        <h:inputText class="form-control" id="searchInputText" autocomplete="off" value="#{movieController.filterValue}" style="margin-bottom: 10px;"/>
+                        <h:inputText class="form-control" id="searchInputText" autocomplete="off" value="#{movieController.filterUserInput}" style="margin-bottom: 10px;"/>
                         <h:commandButton class="btn btn-success w-100" action="#{movieController.filter}" value="Search" style="margin-bottom: 10px;"/>
                     </h:panelGrid>
                 </h:form>
