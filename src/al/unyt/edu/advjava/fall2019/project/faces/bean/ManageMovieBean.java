@@ -75,4 +75,13 @@ public abstract class ManageMovieBean extends RequiresLoginBean {
         return this.movieData;
     }
 
+    public String getThumbnailLink()
+    {
+        return this.movieData.getThumbnailLink();
+    }
+
+    public void setThumbnailLink(String thumbnailLink) {
+        this.movieData.setThumbnailLink(thumbnailLink);
+    }
+
 }

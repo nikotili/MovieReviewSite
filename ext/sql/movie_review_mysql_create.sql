@@ -57,3 +57,5 @@ ALTER TABLE rating
 
 ALTER TABLE rating
     ADD CONSTRAINT ratings_fk1 FOREIGN KEY (movie_id) REFERENCES movies (id);
+
+ALTER TABLE `movies` CHANGE `thumbnail_link` `thumbnail_link` VARCHAR(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;

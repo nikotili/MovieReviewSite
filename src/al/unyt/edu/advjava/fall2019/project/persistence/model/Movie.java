@@ -19,6 +19,7 @@ public class Movie implements Serializable {
     private String synopsis;
     private String genre;
     private String rating;
+    private String thumbnailLink;
     private Set<Director> directors;
     private List<Rating> ratings;
 
@@ -40,6 +41,16 @@ public class Movie implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Basic
+    @Column(name = "thumbnail_link", nullable = true, length = 1000)
+    public String getThumbnailLink() {
+        return thumbnailLink;
+    }
+
+    public void setThumbnailLink(String thumbnailLink) {
+        this.thumbnailLink = thumbnailLink;
     }
 
     @Basic

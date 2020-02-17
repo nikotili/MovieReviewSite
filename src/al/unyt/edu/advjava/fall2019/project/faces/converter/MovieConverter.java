@@ -47,6 +47,7 @@ public class MovieConverter {
                 .setSynopsis(movie.getSynopsis())
                 .setGenre(movie.getGenre())
                 .setRating(movie.getRating())
+                .setThumbnailLink(movie.getThumbnailLink())
                 .build();
     }
 
@@ -60,6 +61,7 @@ public class MovieConverter {
                 .setSynopsis(movie.getSynopsis())
                 .setGenre(movie.getGenre())
                 .setRating(movie.getRating())
+                .setThumbnailLink(movie.getThumbnailLink())
                 .setAverageRating(movie.calculateAndGetAvgRating())
                 .setDirectors(directorDataSet)
                 .build();
@@ -74,6 +76,7 @@ public class MovieConverter {
         movie.setSynopsis(movieData.getSynopsis());
         movie.setGenre(movieData.getGenre());
         movie.setRating(movieData.getRating());
+        movie.setThumbnailLink(movieData.getThumbnailLink());
         return movie;
     }
 

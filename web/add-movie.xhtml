@@ -90,7 +90,20 @@
                     </h:panelGroup>
                     <br/>
                     <br/>
-                    <h:commandButton styleClass="btn btn-info btn-md" value="Add" id="addMovieButton"
+                    <h:panelGroup styleClass="form-group">
+                        <h:outputText  styleClass="text-info" value="Thumbnail Link" />
+                        <h:inputText styleClass="form-control"
+                                     id="thumbnailLinkInputText"
+                                     value="#{addMovieBean.thumbnailLink}"
+                                     required="false"
+                                     validatorMessage="Max 1000 chars">
+                            <f:validateLength for="thumbnailLinkInputText"
+                                              maximum="1000"/>
+                        </h:inputText>
+                        <h:message styleClass="alert alert-warning" style="padding: 8px; !important;" for="thumbnailLinkInputText"/>
+                    </h:panelGroup>
+                    <br/><br/>
+                    <h:commandButton styleClass="btn btn-info btn-md" value="Save" id="addMovieButton"
                                      action="#{addMovieBean.saveAction}"/>
                     <h:message styleClass="alert alert-warning" style="padding: 8px; !important;" for="addMovieButton"/>
                 </h:form>

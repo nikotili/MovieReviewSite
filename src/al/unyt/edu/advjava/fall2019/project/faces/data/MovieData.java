@@ -14,6 +14,7 @@ public class MovieData {
     private String rating;
     private Set<DirectorData> directors;
     double averageRating;
+    private String thumbnailLink;
 
     public Integer getId() {
         return id;
@@ -28,6 +29,7 @@ public class MovieData {
         private String rating = "";
         private Set<DirectorData> directors = new HashSet<>();
         double averageRating = 0.0D;
+        private String thumbnailLink = "";
 
         public Builder(Integer id, String title) {
             this.id = id;
@@ -74,12 +76,17 @@ public class MovieData {
             return this;
         }
 
+        public Builder setThumbnailLink(String thumbnailLink) {
+            this.thumbnailLink = thumbnailLink;
+            return this;
+        }
+
         public MovieData build() {
-            return new MovieData(id, title, releaseDate, synopsis, genre, rating, directors, averageRating);
+            return new MovieData(id, title, releaseDate, synopsis, genre, rating, directors, averageRating, thumbnailLink);
         }
     }
 
-    private MovieData(Integer id, String title, Date releaseDate, String synopsis, String genre, String rating, Set<DirectorData> directors, double averageRating) {
+    private MovieData(Integer id, String title, Date releaseDate, String synopsis, String genre, String rating, Set<DirectorData> directors, double averageRating, String thumbnailLink) {
         this.id = id;
         this.title = title;
         this.releaseDate = releaseDate;
@@ -88,6 +95,7 @@ public class MovieData {
         this.rating = rating;
         this.directors = directors;
         this.averageRating = averageRating;
+        this.thumbnailLink = thumbnailLink;
     }
 
     public MovieData(){}
@@ -150,5 +158,13 @@ public class MovieData {
 
     public void setAverageRating(double averageRating) {
         this.averageRating = averageRating;
+    }
+
+    public String getThumbnailLink() {
+        return thumbnailLink;
+    }
+
+    public void setThumbnailLink(String thumbnailLink) {
+        this.thumbnailLink = thumbnailLink;
     }
 }
