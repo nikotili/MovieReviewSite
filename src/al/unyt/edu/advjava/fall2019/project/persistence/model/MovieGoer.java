@@ -1,6 +1,7 @@
 package al.unyt.edu.advjava.fall2019.project.persistence.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -10,6 +11,7 @@ public class MovieGoer {
     private String surname;
     private String email;
     private String password;
+    private List<Rating> ratings;
 
     @Basic
     @Column(name = "name", nullable = false, length = 30)
@@ -60,6 +62,15 @@ public class MovieGoer {
                 Objects.equals(surname, movieGoer.surname) &&
                 Objects.equals(email, movieGoer.email) &&
                 Objects.equals(password, movieGoer.password);
+    }
+
+    @OneToMany(mappedBy = "movieGoer", fetch = FetchType.EAGER)
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
     }
 
     public String fullName() {
