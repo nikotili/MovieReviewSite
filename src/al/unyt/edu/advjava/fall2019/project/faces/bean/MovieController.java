@@ -129,6 +129,14 @@ public class MovieController {
         FacesUtil.redirect(FacesUtil.INDEX_URI);
     }
 
+    public void saveAction() {
+        DefaultAppController
+                .getInstance()
+                .addNewMovie(MovieConverter.toMovieFromData(movieDataInContext));
+        reset();
+        FacesUtil.redirect(FacesUtil.INDEX_URI);
+    }
+
     private void reset() {
         movieDataInContext = new MovieData();
         movieList = MovieConverter.allMoviesToDataForIndex();

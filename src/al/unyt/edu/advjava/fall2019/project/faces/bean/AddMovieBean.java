@@ -1,21 +1,22 @@
 package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
-import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController;
-import al.unyt.edu.advjava.fall2019.project.faces.converter.MovieConverter;
-import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
-
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 
 @ManagedBean
-public class AddMovieBean extends ManageMovieBean {
-
+@RequestScoped
+public class AddMovieBean extends RequiresLoginBean {
     @Override
-    public void saveAction() {
-        final MovieData movieData = getMovieData();
-        DefaultAppController
-                .getInstance()
-                .addNewMovie(MovieConverter.toMovieFromData(movieData));
-        FacesUtil.redirect(FacesUtil.INDEX_URI);
+    public void init() {
+        try {
+            super.init();
+            boolean editMode = getMovieController().isEditMode();
+            if (editMode)
+                FacesUtil.redirect(FacesUtil.INDEX_URI);
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Redirected from super.init()");
+        }
     }
 }

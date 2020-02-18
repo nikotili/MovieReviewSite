@@ -161,6 +161,9 @@ public class MovieData {
     }
 
     public String getThumbnailLink() {
+        if(thumbnailLink == null){
+            return "";
+        }
         return thumbnailLink;
     }
 

@@ -24,6 +24,7 @@ public class Movie implements Serializable {
     private List<Rating> ratings;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
