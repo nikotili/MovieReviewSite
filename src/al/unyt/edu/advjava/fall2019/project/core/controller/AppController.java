@@ -18,6 +18,8 @@ public interface AppController {
 
     void updateMovie(Movie movie);
 
+    void deleteMovie(Movie movie);
+
     Collection<String> getMovieGenres();
 
     Map<String, String> getMovieRatings();

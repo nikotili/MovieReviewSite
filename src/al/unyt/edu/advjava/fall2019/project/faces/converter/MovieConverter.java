@@ -26,6 +26,7 @@ public class MovieConverter {
     private static MovieData toDataForIndex(Movie movie) {
         return new MovieData.Builder(movie.getId(), movie.getTitle())
                 .setAverageRating(movie.calculateAndGetAvgRating())
+                .setThumbnailLink(movie.getThumbnailLink())
                 .build();
     }
 

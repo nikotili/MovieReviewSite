@@ -3,6 +3,7 @@ package al.unyt.edu.advjava.fall2019.project.persistence.dao;
 import al.unyt.edu.advjava.fall2019.project.persistence.dao.interfaces.MovieDao;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 
+import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import java.util.*;
 
@@ -60,7 +61,19 @@ final class MovieDaoImpl implements MovieDao {
 
     @Override
     public void delete(Movie movie) throws PersistenceException {
-
+        EntityManager entityManager = entityManagerSupplier.get();
+        try {
+            entityManager.getTransaction().begin();
+            if (!entityManager.contains(movie)) {
+                movie = entityManager.merge(movie);
+            }
+            entityManager.remove(movie);
+            entityManager.getTransaction().commit();
+        }
+        finally {
+            if (entityManager != null)
+                entityManager.close();
+        }
     }
 
     @Override

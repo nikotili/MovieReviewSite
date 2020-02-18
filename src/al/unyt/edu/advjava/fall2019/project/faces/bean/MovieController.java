@@ -19,6 +19,7 @@ public class MovieController {
     private MovieData movieDataInContext = new MovieData();
     private RequiresLoginMethodNoParam<String> addNewMovieMethod = () -> redirectTo(FacesUtil.ADD_MOVIE_URI);
     private RequiresLoginMethod<Integer, String> editMovieMethod = this::editMovie;
+    private RequiresLoginMethodNoParam<String> deleteMovieMethod = this::deleteMovie;
     private Collection<String> genres = DefaultAppController.getInstance().getMovieGenres();
     private Map<String, String> ratingsMap = DefaultAppController.getInstance().getMovieRatings();
 
@@ -82,6 +83,16 @@ public class MovieController {
         movieDataInContext = MovieConverter.toDataForEdit(movieID);
         editMode = true;
         return redirectTo(FacesUtil.EDIT_MOVIE_URI);
+    }
+
+    private String deleteMovie() {
+        if (movieDataInContext.getId() != -100) {
+            DefaultAppController
+                    .getInstance()
+                    .deleteMovie(MovieConverter.toMovieFromData(movieDataInContext));
+        }
+        reset();
+        return redirectTo(FacesUtil.INDEX_URI);
     }
 
     public boolean isEditMode() {
@@ -165,5 +176,13 @@ public class MovieController {
 
     public String getNoFilterValue() {
         return MovieFilter.NO_FILTER;
+    }
+
+    public RequiresLoginMethodNoParam<String> getDeleteMovieMethod() {
+        return deleteMovieMethod;
+    }
+
+    public void setDeleteMovieMethod(RequiresLoginMethodNoParam<String> deleteMovieMethod) {
+        this.deleteMovieMethod = deleteMovieMethod;
     }
 }

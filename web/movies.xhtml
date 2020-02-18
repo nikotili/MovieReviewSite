@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row jumbotron jumbotron-fluid px-1 py-3">
             <div class="col-md-2" style="height: 100%; ">
-                <h:graphicImage style=" border-radius: 10%;" value="#{movieInfoBean.movieController.movieDataInContext.thumbnailLink}" height="300px" width="200px"/>
+                <h:graphicImage style="border-radius: 10%;" value="#{movieInfoBean.movieController.movieDataInContext.thumbnailLink}" height="300px" width="200px"/>
             </div>
             <div class="col-md-10" style="min-height: 300px; width: calc(100% - 200px); float: right;">
                 <div class="jumbotron jumbotron-fluid px-1 py-3" style=" background-color: rgba(153,153,153,0.16) ;box-shadow: #0f0f0f">
@@ -48,8 +48,8 @@
                         <h:form>
                             <h:commandLink styleClass="form-control btn btn-md btn-primary" value="Update Movie"
                                            action="#{movieInfoBean.movieController.editMovieMethod.call(movieController.movieDataInContext.id)}"> </h:commandLink>
-                            <h:outputLink styleClass="form-control btn btn-md btn-danger">Delete Movie
-                            </h:outputLink>
+                            <h:commandLink styleClass="form-control btn btn-md btn-danger" value="Delete Movie"
+                                           action="#{movieInfoBean.movieController.deleteMovieMethod.call()}"> </h:commandLink>
                         </h:form>
                     </h:panelGrid>
                 </h:panelGroup>

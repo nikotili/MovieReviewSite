@@ -57,4 +57,9 @@ public final class DefaultAppController implements AppController {
     public void updateMovie(Movie movie) {
         DaoFactory.getMovieDao().update(movie);
     }
+
+    @Override
+    public void deleteMovie(Movie movie) {
+        DaoFactory.getMovieDao().delete(movie);
+    }
 }
