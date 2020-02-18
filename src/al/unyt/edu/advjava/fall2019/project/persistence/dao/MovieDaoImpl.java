@@ -2,9 +2,11 @@ package al.unyt.edu.advjava.fall2019.project.persistence.dao;
 
 import al.unyt.edu.advjava.fall2019.project.persistence.dao.interfaces.MovieDao;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
+import al.unyt.edu.advjava.fall2019.project.persistence.model.Rating;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
+import javax.persistence.TypedQuery;
 import java.util.*;
 
 final class MovieDaoImpl implements MovieDao {
@@ -67,6 +69,11 @@ final class MovieDaoImpl implements MovieDao {
             if (!entityManager.contains(movie)) {
                 movie = entityManager.merge(movie);
             }
+
+            TypedQuery<Rating> deleteRatingsByMovieID = entityManager.createNamedQuery("Rating.deleteRatingsByMovieID", Rating.class);
+            deleteRatingsByMovieID.setParameter("movieId", movie.getId());
+            deleteRatingsByMovieID.executeUpdate();
+
             entityManager.remove(movie);
             entityManager.getTransaction().commit();
         }

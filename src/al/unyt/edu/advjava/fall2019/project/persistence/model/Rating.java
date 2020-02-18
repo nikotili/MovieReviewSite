@@ -6,6 +6,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "ratings", schema = "movie_review")
 @IdClass(RatingsPK.class)
+@NamedQueries({@NamedQuery(name = "Rating.deleteRatingsByMovieID", query = "DELETE FROM Rating r WHERE r.movieId = :movieId")})
 public class Rating {
     private String movieGoerEmail;
     private int movieId;
