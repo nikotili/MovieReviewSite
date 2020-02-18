@@ -46,6 +46,8 @@
                 <h:panelGroup styleClass="form-group">
                     <h:panelGrid columns="2" style="width: 100%;">
                         <h:form>
+                            <h:commandLink styleClass="form-control btn btn-md btn-primary" value="Add Rating"
+                                           action="#{movieInfoBean.movieController.editMovieMethod.call(movieController.movieDataInContext.id)}"> </h:commandLink>
                             <h:commandLink styleClass="form-control btn btn-md btn-primary" value="Update Movie"
                                            action="#{movieInfoBean.movieController.editMovieMethod.call(movieController.movieDataInContext.id)}"> </h:commandLink>
                             <h:commandLink styleClass="form-control btn btn-md btn-danger" value="Delete Movie"
@@ -56,5 +58,19 @@
             </div>
         </div>
     </div>
+    <h:dataTable class="table" value="#{movieInfoBean.movieController.movieDataInContext.ratings}" var="rating">
+        <h:column>
+            <f:facet name="header">Movie Goer</f:facet>
+            #{rating.movieGoerData.fullName}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Comment</f:facet>
+            <h:commandLink value="#{rating.comment}">
+            </h:commandLink> </h:column>
+        <h:column>
+            <f:facet name="header">Rating</f:facet>
+            #{rating.rating}
+        </h:column>
+    </h:dataTable>
 </h:body>
 </html>

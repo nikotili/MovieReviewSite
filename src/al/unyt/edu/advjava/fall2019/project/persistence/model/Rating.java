@@ -13,6 +13,7 @@ public class Rating {
     private int rating;
     private String comment;
     private Movie movie;
+    private MovieGoer movieGoer;
 
     @Id
     @Column(name = "movie_goer_email", nullable = false, length = 50)
@@ -67,6 +68,21 @@ public class Rating {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+    }
+
+    @JoinColumn(
+            name = "movie_goer_email",
+            referencedColumnName = "email",
+            insertable = false,
+            updatable = false
+    )
+    @ManyToOne(optional = false)
+    public MovieGoer getMovieGoer() {
+        return movieGoer;
+    }
+
+    public void setMovieGoer(MovieGoer movieGoer) {
+        this.movieGoer = movieGoer;
     }
 
     @Override

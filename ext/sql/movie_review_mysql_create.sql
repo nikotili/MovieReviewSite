@@ -8,6 +8,7 @@ CREATE TABLE movies
     synopsis     varchar(400),
     genre        varchar(30)  NOT NULL,
     rating       varchar(30)  NOT NULL,
+    thumbnail_link varchar(1000),
     PRIMARY KEY (id)
 );
 

@@ -1,8 +1,6 @@
 package al.unyt.edu.advjava.fall2019.project.faces.data;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class MovieData {
     public static final MovieData DUMMY = new MovieData();
@@ -13,7 +11,8 @@ public class MovieData {
     private String genre;
     private String rating;
     private Set<DirectorData> directors;
-    double averageRating;
+    private List<RatingData> ratingData;
+    private double averageRating;
     private String thumbnailLink;
 
     public Integer getId() {
@@ -28,6 +27,7 @@ public class MovieData {
         private String genre = "";
         private String rating = "";
         private Set<DirectorData> directors = new HashSet<>();
+        private List<RatingData> ratingData = new ArrayList<>();
         double averageRating = 0.0D;
         private String thumbnailLink = "";
 
@@ -76,17 +76,24 @@ public class MovieData {
             return this;
         }
 
+        public Builder setRatings(List<RatingData> ratingData) {
+            this.ratingData = ratingData;
+            return this;
+        }
+
         public Builder setThumbnailLink(String thumbnailLink) {
             this.thumbnailLink = thumbnailLink;
             return this;
         }
 
         public MovieData build() {
-            return new MovieData(id, title, releaseDate, synopsis, genre, rating, directors, averageRating, thumbnailLink);
+            return new MovieData(id, title, releaseDate, synopsis, genre, rating, directors, ratingData, averageRating, thumbnailLink);
         }
     }
 
-    private MovieData(Integer id, String title, Date releaseDate, String synopsis, String genre, String rating, Set<DirectorData> directors, double averageRating, String thumbnailLink) {
+    private MovieData(Integer id, String title, Date releaseDate, String synopsis, String genre, String rating,
+                      Set<DirectorData> directors, List<RatingData> ratingData,
+                      double averageRating, String thumbnailLink) {
         this.id = id;
         this.title = title;
         this.releaseDate = releaseDate;
@@ -94,6 +101,7 @@ public class MovieData {
         this.genre = genre;
         this.rating = rating;
         this.directors = directors;
+        this.ratingData = ratingData;
         this.averageRating = averageRating;
         this.thumbnailLink = thumbnailLink;
     }
@@ -158,6 +166,14 @@ public class MovieData {
 
     public void setAverageRating(double averageRating) {
         this.averageRating = averageRating;
+    }
+
+    public List<RatingData> getRatings() {
+        return ratingData;
+    }
+
+    public void setRatings(List<RatingData> ratingData) {
+        this.ratingData = ratingData;
     }
 
     public String getThumbnailLink() {

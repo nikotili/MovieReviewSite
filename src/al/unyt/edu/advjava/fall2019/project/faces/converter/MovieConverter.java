@@ -4,9 +4,11 @@ import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController
 import al.unyt.edu.advjava.fall2019.project.faces.bean.FacesUtil;
 import al.unyt.edu.advjava.fall2019.project.faces.data.DirectorData;
 import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
+import al.unyt.edu.advjava.fall2019.project.faces.data.RatingData;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -52,11 +54,16 @@ public class MovieConverter {
                 .build();
     }
 
+    public static MovieData toDataForRating(Movie movie) {
+        return new MovieData.Builder(movie.getId(), movie.getTitle()).build();
+    }
+
     public static MovieData toDataForInfo(Integer movieID) {
         Movie movie = DefaultAppController.getInstance().getMovieByPK(movieID);
         if (movie == null)
             return null;
         Set<DirectorData> directorDataSet = DirectorConverter.toDataSet(movie.getDirectors());
+        List<RatingData> ratingDataList = RatingConverter.toDataList(movie.getRatings());
         return new MovieData.Builder(movie.getId(), movie.getTitle())
                 .setReleaseDate(movie.getReleaseDate())
                 .setSynopsis(movie.getSynopsis())
@@ -65,6 +72,7 @@ public class MovieConverter {
                 .setThumbnailLink(movie.getThumbnailLink())
                 .setAverageRating(movie.calculateAndGetAvgRating())
                 .setDirectors(directorDataSet)
+                .setRatings(ratingDataList)
                 .build();
     }
 
