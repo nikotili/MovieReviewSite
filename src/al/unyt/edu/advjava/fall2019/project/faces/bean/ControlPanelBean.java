@@ -25,7 +25,7 @@ public class ControlPanelBean {
         return isUserLoggedIn();
     }
 
-    public boolean isLogInRendered() {
+    public boolean isLogInPanelRendered() {
         return !isUserLoggedIn();
     }
 

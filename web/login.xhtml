@@ -18,7 +18,7 @@
                 <h:panelGroup styleClass="col-md-6" >
                     <h:form styleClass="form" style="margin: auto">
                         <h3 class="text-center text-primary">Login</h3>
-                        <h:outputText rendered="#{loginBean.isRedirectedForValidation()}" styleClass="text-center text-danger btn-danger form-control" value="Error can't add movie without login."/>
+                        <h:outputText rendered="#{loginBean.isRedirectedForValidation()}" styleClass="text-center text-danger btn-danger form-control" value="Error\nYou are not logged in."/>
                         <h:panelGroup  styleClass="form-group"  >
                             <h:outputText styleClass="text-primary" value="Email:" />
                             <h:inputText id="emailInputText"

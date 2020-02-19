@@ -5,17 +5,25 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-    <h:outputStylesheet name="bootstrap.css" library="css" />
+    <h:outputStylesheet name="bootstrap.css" library="css"/>
 </h:head>
 <h:body>
     <ui:composition>
         <h:form styleClass="form" style=" margin: auto; width: 100% !important">
-        <h:panelGrid columns="4" style="width: 100%;">
-            <h:commandLink style="font-size: 40px;" styleClass="col-md-9 text-left text-info pt-5" value="Movie Reviews" action="index"/>
-            <h:commandLink rendered="#{controlPanelBean.logInRendered}" styleClass="text-center btn-info form-control" value="Login" action="login"/>
-            <h:outputText rendered="#{controlPanelBean.userPanelRendered}" styleClass="text-center text-primary form-control" value="User: #{controlPanelBean.userFullName}"/>
-            <h:commandLink rendered="#{controlPanelBean.userPanelRendered}" styleClass="text-center btn-warning form-control" value="Logout" action="#{controlPanelBean.logOutAction}" />
-        </h:panelGrid>
+            <h:panelGrid columns="4" style="width: 100%;">
+                <h:commandLink style="font-size: 40px;" styleClass="col-md-9 text-left text-info pt-5"
+                               value="Movie Reviews" action="index"/>
+                <h:commandLink rendered="#{controlPanelBean.logInPanelRendered}"
+                               styleClass="text-center btn-info form-control" value="Login" action="login"/>
+                <h:commandLink rendered="#{controlPanelBean.logInPanelRendered}"
+                               styleClass="text-center btn-info form-control" value="Register" action="register"/>
+                <h:outputText rendered="#{controlPanelBean.userPanelRendered}"
+                              styleClass="text-center text-primary form-control"
+                              value="User: #{controlPanelBean.userFullName}"/>
+                <h:commandLink rendered="#{controlPanelBean.userPanelRendered}"
+                               styleClass="text-center btn-warning form-control" value="Logout"
+                               action="#{controlPanelBean.logOutAction}"/>
+            </h:panelGrid>
         </h:form>
     </ui:composition>
 </h:body>

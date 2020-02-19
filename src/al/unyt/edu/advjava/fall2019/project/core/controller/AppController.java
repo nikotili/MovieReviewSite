@@ -4,12 +4,15 @@ import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Rating;
 
+import javax.persistence.PersistenceException;
 import java.util.Collection;
 import java.util.Map;
 
 public interface AppController {
 
     MovieGoer authenticate(String email, String password) throws SecurityException;
+
+    void registerMovieGoer(MovieGoer movieGoer) throws PersistenceException;
 
     Collection<Movie> getAllMovies();
 

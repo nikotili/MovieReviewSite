@@ -6,6 +6,7 @@ import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Rating;
 
+import javax.persistence.PersistenceException;
 import java.util.Collection;
 import java.util.Map;
 
@@ -27,6 +28,11 @@ public final class DefaultAppController implements AppController {
     public MovieGoer authenticate(String email, String password) throws SecurityException {
         return DefaultAuthenticationManager.getInstance()
                 .tryAuth(email, password);
+    }
+
+    @Override
+    public void registerMovieGoer(MovieGoer movieGoer) throws PersistenceException {
+        DaoFactory.getMovieGoerDao().persist(movieGoer);
     }
 
     @Override
