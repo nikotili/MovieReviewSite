@@ -1,4 +1,4 @@
-package al.unyt.edu.advjava.fall2019.project.faces.converter;
+package al.unyt.edu.advjava.fall2019.project.core.converter;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;

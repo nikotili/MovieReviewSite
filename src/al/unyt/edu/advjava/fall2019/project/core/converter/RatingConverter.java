@@ -1,11 +1,11 @@
-package al.unyt.edu.advjava.fall2019.project.faces.converter;
+package al.unyt.edu.advjava.fall2019.project.core.converter;
 
 import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
 import al.unyt.edu.advjava.fall2019.project.faces.data.MovieGoerData;
 import al.unyt.edu.advjava.fall2019.project.faces.data.RatingData;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Rating;
 
-import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RatingConverter {
@@ -17,11 +17,11 @@ public class RatingConverter {
         return new RatingData(movieGoerData, movieData, rating.getComment(), rating.getRating());
     }
 
-    public static List<RatingData> toDataList(List<Rating> ratings) {
+    public static Set<RatingData> toDataSet(Set<Rating> ratings) {
         return ratings
                 .stream()
                 .map(RatingConverter::toData)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     public static Rating toRating(RatingData ratingData) {

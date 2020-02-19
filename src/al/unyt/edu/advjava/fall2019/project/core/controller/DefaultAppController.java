@@ -4,6 +4,7 @@ import al.unyt.edu.advjava.fall2019.project.core.manager.auth.DefaultAuthenticat
 import al.unyt.edu.advjava.fall2019.project.persistence.dao.DaoFactory;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
+import al.unyt.edu.advjava.fall2019.project.persistence.model.Rating;
 
 import java.util.Collection;
 import java.util.Map;
@@ -34,6 +35,11 @@ public final class DefaultAppController implements AppController {
     }
 
     @Override
+    public Collection<Rating> getAllRatings() {
+        return DaoFactory.getRatingDao().getAll();
+    }
+
+    @Override
     public void addNewMovie(Movie movie) {
         DaoFactory.getMovieDao().persist(movie);
     }
@@ -61,5 +67,10 @@ public final class DefaultAppController implements AppController {
     @Override
     public void deleteMovie(Movie movie) {
         DaoFactory.getMovieDao().delete(movie);
+    }
+
+    @Override
+    public void addRating(Rating rating) {
+        DaoFactory.getRatingDao().upsert(rating);
     }
 }

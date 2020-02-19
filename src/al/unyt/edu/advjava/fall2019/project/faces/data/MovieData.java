@@ -1,6 +1,8 @@
 package al.unyt.edu.advjava.fall2019.project.faces.data;
 
-import java.util.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MovieData {
     public static final MovieData DUMMY = new MovieData();
@@ -11,7 +13,7 @@ public class MovieData {
     private String genre;
     private String rating;
     private Set<DirectorData> directors;
-    private List<RatingData> ratingData;
+    private Set<RatingData> ratingData;
     private double averageRating;
     private String thumbnailLink;
 
@@ -27,7 +29,7 @@ public class MovieData {
         private String genre = "";
         private String rating = "";
         private Set<DirectorData> directors = new HashSet<>();
-        private List<RatingData> ratingData = new ArrayList<>();
+        private Set<RatingData> ratingData = new HashSet<>();
         double averageRating = 0.0D;
         private String thumbnailLink = "";
 
@@ -76,7 +78,7 @@ public class MovieData {
             return this;
         }
 
-        public Builder setRatings(List<RatingData> ratingData) {
+        public Builder setRatingData(Set<RatingData> ratingData) {
             this.ratingData = ratingData;
             return this;
         }
@@ -92,7 +94,7 @@ public class MovieData {
     }
 
     private MovieData(Integer id, String title, Date releaseDate, String synopsis, String genre, String rating,
-                      Set<DirectorData> directors, List<RatingData> ratingData,
+                      Set<DirectorData> directors, Set<RatingData> ratingData,
                       double averageRating, String thumbnailLink) {
         this.id = id;
         this.title = title;
@@ -168,12 +170,23 @@ public class MovieData {
         this.averageRating = averageRating;
     }
 
-    public List<RatingData> getRatings() {
+    public Set<RatingData> getRatingData() {
         return ratingData;
     }
 
-    public void setRatings(List<RatingData> ratingData) {
+    public void setRatingData(Set<RatingData> ratingData) {
         this.ratingData = ratingData;
+    }
+
+    public RatingData getMovieGoerRating(String email) {
+        return this.getRatingData()
+                .stream()
+                .filter(ratingData -> ratingData
+                        .getMovieGoerData()
+                        .getEmail()
+                        .equals(email))
+                .findAny()
+                .orElse(null);
     }
 
     public String getThumbnailLink() {

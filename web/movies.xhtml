@@ -25,7 +25,7 @@
                         <h4 class="display-7">Score:
                             <h:outputText value="#{movieInfoBean.movieController.movieDataInContext.averageRating}">
                                 <f:convertNumber pattern="#0.0"/>
-                            </h:outputText> / 5
+                            </h:outputText> / 5.0
                         </h4>
                         <h:outputText value="#{movieInfoBean.movieController.movieDataInContext.releaseDate}"
                                       title="Release Date">
@@ -47,7 +47,7 @@
                     <h:panelGrid columns="2" style="width: 100%;">
                         <h:form>
                             <h:commandLink styleClass="form-control btn btn-md btn-primary" value="Add Rating"
-                                           action="#{movieInfoBean.movieController.editMovieMethod.call(movieController.movieDataInContext.id)}"> </h:commandLink>
+                                           action="#{movieInfoBean.movieController.reviewMovieMethod.call(movieController.movieDataInContext.id)}"> </h:commandLink>
                             <h:commandLink styleClass="form-control btn btn-md btn-primary" value="Update Movie"
                                            action="#{movieInfoBean.movieController.editMovieMethod.call(movieController.movieDataInContext.id)}"> </h:commandLink>
                             <h:commandLink styleClass="form-control btn btn-md btn-danger" value="Delete Movie"
@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-    <h:dataTable class="table" value="#{movieInfoBean.movieController.movieDataInContext.ratings}" var="rating">
+    <h:dataTable class="table" value="#{movieInfoBean.movieController.movieDataInContext.ratingData}" var="rating">
         <h:column>
             <f:facet name="header">Movie Goer</f:facet>
             #{rating.movieGoerData.fullName}

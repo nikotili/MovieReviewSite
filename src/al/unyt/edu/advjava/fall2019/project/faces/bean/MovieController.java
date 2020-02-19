@@ -1,10 +1,13 @@
 package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
 import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController;
-import al.unyt.edu.advjava.fall2019.project.faces.converter.MovieConverter;
+import al.unyt.edu.advjava.fall2019.project.core.converter.MovieConverter;
+import al.unyt.edu.advjava.fall2019.project.core.manager.session.DefaultSessionManager;
 import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
 import al.unyt.edu.advjava.fall2019.project.faces.method.RequiresLoginMethod;
 import al.unyt.edu.advjava.fall2019.project.faces.method.RequiresLoginMethodNoParam;
+import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
+import al.unyt.edu.advjava.fall2019.project.persistence.model.Rating;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -17,11 +20,13 @@ import java.util.Map;
 public class MovieController {
     private Collection<MovieData> movieList;
     private MovieData movieDataInContext = new MovieData();
+    private Movie movieInContext = new Movie();
     private RequiresLoginMethodNoParam<String> addNewMovieMethod = () -> redirectTo(FacesUtil.ADD_MOVIE_URI);
     private RequiresLoginMethod<Integer, String> editMovieMethod = this::editMovie;
+    private RequiresLoginMethod<Integer, String> reviewMovieMethod = this::reviewMovie;
     private RequiresLoginMethodNoParam<String> deleteMovieMethod = this::deleteMovie;
-    private Collection<String> genres = DefaultAppController.getInstance().getMovieGenres();
-    private Map<String, String> ratingsMap = DefaultAppController.getInstance().getMovieRatings();
+    private Collection<String> genres = getAppController().getMovieGenres();
+    private Map<String, String> ratingsMap = getAppController().getMovieRatings();
 
     private boolean editMode = false;
 
@@ -73,22 +78,34 @@ public class MovieController {
         return editMovieMethod;
     }
 
+    public RequiresLoginMethod<Integer, String> getReviewMovieMethod() {
+        return reviewMovieMethod;
+    }
+
     public String displayInfoForMovie(Integer movieID) {
+        movieInContext = getAppController().getMovieByPK(movieID);
         movieDataInContext = MovieConverter.toDataForInfo(movieID);
         editMode = false;
         return redirectTo(FacesUtil.MOVIES_URI);
     }
 
     private String editMovie(Integer movieID) {
+        movieInContext = getAppController().getMovieByPK(movieID);
         movieDataInContext = MovieConverter.toDataForEdit(movieID);
         editMode = true;
         return redirectTo(FacesUtil.EDIT_MOVIE_URI);
     }
 
+    private String reviewMovie(Integer movieID) {
+        movieInContext = getAppController().getMovieByPK(movieID);
+        movieDataInContext = MovieConverter.toDataForReview(movieID);
+        editMode = false;
+        return redirectTo(FacesUtil.REVIEW_MOVIE_URI);
+    }
+
     private String deleteMovie() {
         if (movieDataInContext.getId() != -100) {
-            DefaultAppController
-                    .getInstance()
+            getAppController()
                     .deleteMovie(MovieConverter.toMovieFromData(movieDataInContext));
         }
         reset();
@@ -132,25 +149,44 @@ public class MovieController {
 
     public void saveEdit() {
         if (movieDataInContext.getId() != -100) {
-            DefaultAppController
-                    .getInstance()
+            getAppController()
                     .updateMovie(MovieConverter.toMovieFromData(movieDataInContext));
         }
         reset();
         FacesUtil.redirect(FacesUtil.INDEX_URI);
     }
 
+    public void saveReview(String comment, int rating) {
+        Rating movieGoerRating = new Rating();
+        movieGoerRating.setComment(comment);
+        movieGoerRating.setRating(rating);
+        movieGoerRating.setMovieGoer(DefaultSessionManager.getInstance().getLoggedInUser());
+        movieGoerRating.setMovie(movieInContext);
+        movieGoerRating.setMovieGoerEmail(DefaultSessionManager.getInstance().getLoggedInUser().getEmail());
+        movieGoerRating.setMovieId(movieInContext.getId());
+
+        getAppController().addRating(movieGoerRating);
+        movieInContext.getRatings().add(movieGoerRating);
+        getAppController().updateMovie(movieInContext);
+        reset();
+        FacesUtil.redirect(FacesUtil.INDEX_URI);
+    }
+
+    private DefaultAppController getAppController() {
+        return DefaultAppController.getInstance();
+    }
+
     public void saveAction() {
-        DefaultAppController
-                .getInstance()
+        getAppController()
                 .addNewMovie(MovieConverter.toMovieFromData(movieDataInContext));
         reset();
         FacesUtil.redirect(FacesUtil.INDEX_URI);
     }
 
     private void reset() {
+        movieInContext = new Movie();
         movieDataInContext = new MovieData();
-        movieList = MovieConverter.allMoviesToDataForIndex();
+        loadData();
         editMode = false;
     }
 

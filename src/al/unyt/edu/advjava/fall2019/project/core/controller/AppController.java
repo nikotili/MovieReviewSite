@@ -2,6 +2,7 @@ package al.unyt.edu.advjava.fall2019.project.core.controller;
 
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
+import al.unyt.edu.advjava.fall2019.project.persistence.model.Rating;
 
 import java.util.Collection;
 import java.util.Map;
@@ -12,6 +13,8 @@ public interface AppController {
 
     Collection<Movie> getAllMovies();
 
+    Collection<Rating> getAllRatings();
+
     void addNewMovie(Movie movie);
 
     Movie getMovieByPK(Integer id);
@@ -19,6 +22,8 @@ public interface AppController {
     void updateMovie(Movie movie);
 
     void deleteMovie(Movie movie);
+
+    void addRating(Rating rating);
 
     Collection<String> getMovieGenres();
 

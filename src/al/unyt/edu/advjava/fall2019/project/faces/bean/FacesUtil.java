@@ -11,6 +11,7 @@ public class FacesUtil {
     public static final String LOGIN_URI = "login.xhtml";
     public static final String ADD_MOVIE_URI = "add-movie.xhtml";
     public static final String EDIT_MOVIE_URI = "edit-movie.xhtml";
+    public static final String REVIEW_MOVIE_URI = "review.xhtml";
     public static final String MOVIES_URI = "movies.xhtml";
     public static final String MOVIE_ID_PARAM = "id";
     public static final String LOGIN_ERROR_PARAM = "loginerr";
