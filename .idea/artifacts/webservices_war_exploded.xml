@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="webservices:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/webservices_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="webservices/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="webservices" />
+          <element id="module-output" name="Project" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="JPA 2.0-JPA 2.0" />
+          <element id="library" level="project" name="javax.persistence" />
+          <element id="library" level="project" name="javax.faces-2.4.0" />
+          <element id="library" level="project" name="com.mysql.jdbc_5.1.5" />
+          <element id="library" level="project" name="eclipselink" />
+          <element id="library" level="project" name="Mojarra-2.4.0" />
+          <element id="library" level="project" name="gson-2.8.6" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
