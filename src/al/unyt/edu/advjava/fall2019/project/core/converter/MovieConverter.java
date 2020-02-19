@@ -15,7 +15,32 @@ public class MovieConverter {
 
 
     public static Collection<MovieData> allMoviesToDataForIndex() {
-        return toDataForIndex(DefaultAppController.getInstance().getAllMovies());
+        return toDataForIndex(getAppController().getAllMovies());
+    }
+
+    private static DefaultAppController getAppController() {
+        return DefaultAppController.getInstance();
+    }
+
+    public static Collection<MovieData> allMoviesToDataForREST() {
+        return getAppController()
+                .getAllMovies()
+                .stream()
+                .map(MovieConverter::toDataForREST)
+                .collect(Collectors.toList());
+    }
+
+    public static MovieData toDataForREST(Movie movie) {
+        Set<DirectorData> directorDataSet = DirectorConverter.toDataSet(movie.getDirectors());
+
+        return new MovieData.Builder(movie.getId(), movie.getTitle())
+                .setReleaseDate(movie.getReleaseDate())
+                .setSynopsis(movie.getSynopsis())
+                .setGenre(movie.getGenre())
+                .setRating(movie.getRating())
+                .setDirectors(directorDataSet)
+                .setAverageRating(movie.calculateAndGetAvgRating())
+                .build();
     }
 
     private static Collection<MovieData> toDataForIndex(Collection<Movie> movies) {
@@ -36,7 +61,7 @@ public class MovieConverter {
     }
 
     private static MovieData toDataForManage(Integer movieID) {
-        Movie movie = DefaultAppController.getInstance().getMovieByPK(movieID);
+        Movie movie = getAppController().getMovieByPK(movieID);
         if (movie == null)
             return null;
         return new MovieData.Builder(movie.getId(), movie.getTitle())
@@ -56,7 +81,7 @@ public class MovieConverter {
     }
 
     public static MovieData toDataForReview(Integer movieID) {
-        Movie movie = DefaultAppController.getInstance().getMovieByPK(movieID);
+        Movie movie = getAppController().getMovieByPK(movieID);
         if (movie == null)
             return null;
         Set<RatingData> ratingDataList = RatingConverter.toDataSet(movie.getRatings());
@@ -67,7 +92,7 @@ public class MovieConverter {
     }
 
     public static MovieData toDataForInfo(Integer movieID) {
-        Movie movie = DefaultAppController.getInstance().getMovieByPK(movieID);
+        Movie movie = getAppController().getMovieByPK(movieID);
         if (movie == null)
             return null;
         Set<DirectorData> directorDataSet = DirectorConverter.toDataSet(movie.getDirectors());

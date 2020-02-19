@@ -1,26 +1,25 @@
-import al.unyt.edu.advjava.fall2019.project.faces.converter.MovieConverter;
+import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController;
+import al.unyt.edu.advjava.fall2019.project.core.converter.MovieConverter;
 import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
 import al.unyt.edu.advjava.fall2019.project.persistence.PersistenceUtil;
-import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.*;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 @Path("moviesByRating")
 public class MoviesByRatingRESTJSON {
 
-    Supplier<EntityManager> entityManagerSupplier = PersistenceUtil::newDefaultEntityManager;
+    private Supplier<EntityManager> entityManagerSupplier = PersistenceUtil::newDefaultEntityManager;
+    private Map<String, String> ratingsMap = DefaultAppController.getInstance().getMovieRatings();
 
     public MoviesByRatingRESTJSON() {
     }
@@ -29,20 +28,19 @@ public class MoviesByRatingRESTJSON {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{rating:.*}")
     public String getRest(@PathParam("rating") String rating) {
-        List<MovieData> movies = new ArrayList<>();
+        Collection<MovieData> movies = new ArrayList<>();
         EntityManager em = entityManagerSupplier.get();
         try {
-            movies = em.createNamedQuery("Movie.findAll", Movie.class)
-                    .getResultList()
-                    .stream()
-                    .map(m -> MovieConverter.toDataForInfo(m.getId()))
-                    .collect(Collectors.toList());
+            movies = MovieConverter.allMoviesToDataForREST();
 
             if(rating != null && !rating.equals("")) {
                 List<String> remainingUrl = Arrays.asList(rating.split("/"));
-                String ratingPart = remainingUrl.get(0);
+                String ratingKey = remainingUrl.get(0);
+
+                String ratingVal = ratingsMap.get(ratingKey);
+
                 movies = movies.stream()
-                        .filter(m -> m.getRating().equalsIgnoreCase(ratingPart))
+                        .filter(m -> m.getRating().equalsIgnoreCase(ratingVal))
                         .collect(Collectors.toList());
             }
         } catch (NoResultException e) {
@@ -55,14 +53,14 @@ public class MoviesByRatingRESTJSON {
     }
 
 
-    private class Movies {
-        private List<MovieData> movieDataList;
+    private static class Movies {
+        private Collection<MovieData> movieDataList;
 
-        public List<MovieData> getMovieDataList() {
+        public Collection<MovieData> getMovieDataList() {
             return movieDataList;
         }
 
-        public void setMovieDataList(List<MovieData> movieDataList) {
+        public void setMovieDataList(Collection<MovieData> movieDataList) {
             this.movieDataList = movieDataList;
         }
     }

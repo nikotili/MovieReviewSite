@@ -13,9 +13,9 @@ public class MovieData {
     private String genre;
     private String rating;
     private Set<DirectorData> directors;
-    private Set<RatingData> ratingData;
+    private transient Set<RatingData> ratingData;
     private double averageRating;
-    private String thumbnailLink;
+    private transient String thumbnailLink;
 
     public Integer getId() {
         return id;
