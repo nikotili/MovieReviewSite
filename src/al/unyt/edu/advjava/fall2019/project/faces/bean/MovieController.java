@@ -21,7 +21,7 @@ public class MovieController {
     private Collection<MovieData> movieList;
     private MovieData movieDataInContext = new MovieData();
     private Movie movieInContext = new Movie();
-    private RequiresLoginMethodNoParam<String> addNewMovieMethod = () -> redirectTo(FacesUtil.ADD_MOVIE_URI);
+    private RequiresLoginMethodNoParam<String> addNewMovieMethod = this::addMovie;
     private RequiresLoginMethod<Integer, String> editMovieMethod = this::editMovie;
     private RequiresLoginMethod<Integer, String> reviewMovieMethod = this::reviewMovie;
     private RequiresLoginMethodNoParam<String> deleteMovieMethod = this::deleteMovie;
@@ -87,6 +87,13 @@ public class MovieController {
         movieDataInContext = MovieConverter.toDataForInfo(movieID);
         editMode = false;
         return redirectTo(FacesUtil.MOVIES_URI);
+    }
+
+    private String addMovie() {
+        movieInContext = new Movie();
+        movieDataInContext = new MovieData();
+        editMode = false;
+        return redirectTo(FacesUtil.ADD_MOVIE_URI);
     }
 
     private String editMovie(Integer movieID) {
