@@ -77,8 +77,12 @@ final class MovieDaoImpl implements MovieDao {
             entityManager.remove(movie);
             entityManager.getTransaction().commit();
         }
+        catch (Exception e) {
+            if (entityManager.getTransaction().isActive())
+                entityManager.getTransaction().rollback();
+        }
         finally {
-            if (entityManager != null)
+            if (entityManager.isOpen())
                 entityManager.close();
         }
     }

@@ -20,8 +20,12 @@ public interface ModelDao<Entity, PK> {
             entityManager.persist(entity);
             entityManager.getTransaction().commit();
         }
+        catch (Exception e) {
+            if (entityManager.getTransaction().isActive())
+                entityManager.getTransaction().rollback();
+        }
         finally {
-            if (entityManager != null)
+            if (entityManager.isOpen())
                 entityManager.close();
         }
     }
@@ -37,8 +41,12 @@ public interface ModelDao<Entity, PK> {
             entityManager.merge(entity);
             entityManager.getTransaction().commit();
         }
+        catch (Exception e) {
+            if (entityManager.getTransaction().isActive())
+                entityManager.getTransaction().rollback();
+        }
         finally {
-            if (entityManager != null)
+            if (entityManager.isOpen())
                 entityManager.close();
         }
     }

@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import java.util.Collection;
 
-public class RatingDaoImpl implements RatingDao {
+final class RatingDaoImpl implements RatingDao {
     @Override
     public Collection<Rating> getAll() throws PersistenceException {
         return entityManagerSupplier
