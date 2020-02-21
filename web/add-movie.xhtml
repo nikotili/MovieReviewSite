@@ -7,20 +7,20 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>Add Movie</title>
-    <h:outputStylesheet name="bootstrap.css" library="css" />
+    <h:outputStylesheet name="bootstrap.css" library="css"/>
 </h:head>
 <body>
 <ui:include src="WEB-INF/control_panel.xhtml"/>
 <h:panelGroup styleClass="container ">
-    <h:panelGroup styleClass="row justify-content-center align-items-center" >
+    <h:panelGroup styleClass="row justify-content-center align-items-center">
         <h:panelGroup styleClass="col-md-12">
-            <h:panelGroup styleClass="col-md-3" >
+            <h:panelGroup styleClass="col-md-3">
             </h:panelGroup>
-            <h:panelGroup styleClass="col-md-6" >
+            <h:panelGroup styleClass="col-md-6">
                 <h1 class="text-center text-info pt-5">Add Movie</h1>
                 <h:form styleClass="form" style=" margin: auto">
                     <h:panelGroup styleClass="form-group">
-                        <h:outputText  styleClass="text-info" value="Title" />
+                        <h:outputText styleClass="text-info" value="Title"/>
                         <h:inputText styleClass="form-control"
                                      id="titleInputText"
                                      value="#{addMovieBean.movieController.movieDataInContext.title}"
@@ -30,11 +30,12 @@
                             <f:validateLength for="titleInputText"
                                               maximum="30"/>
                         </h:inputText>
-                        <h:message styleClass="alert alert-warning" style="padding: 8px; !important;" for="titleInputText"/>
+                        <h:message id="titleMessage" styleClass="alert alert-warning" style="padding: 8px; !important;"
+                                   for="titleInputText"/>
                     </h:panelGroup>
                     <br/><br/>
-                    <h:panelGroup  styleClass="form-group" >
-                        <h:outputText styleClass="text-info" value="Release Date (yyyy-mm-dd)" />
+                    <h:panelGroup styleClass="form-group">
+                        <h:outputText styleClass="text-info" value="Release Date (yyyy-mm-dd)"/>
                         <h:inputText styleClass="form-control"
                                      id="dateInputText"
                                      value="#{addMovieBean.movieController.movieDataInContext.releaseDate}"
@@ -45,12 +46,13 @@
                                                for="dateInputText"
                                                pattern="yyyy-MM-dd"/>
                         </h:inputText>
-                        <h:message styleClass="alert alert-warning" style="padding: 8px; !important;" for="dateInputText"/>
+                        <h:message id="dateMessage" styleClass="alert alert-warning" style="padding: 8px; !important;"
+                                   for="dateInputText"/>
                     </h:panelGroup>
 
                     <br/><br/>
-                    <h:panelGroup  styleClass="form-group" >
-                        <h:outputText  styleClass="text-info" value="Synopsis" />
+                    <h:panelGroup styleClass="form-group">
+                        <h:outputText styleClass="text-info" value="Synopsis"/>
                         <h:inputTextarea styleClass="form-control"
                                          id="synopsisInputText"
                                          rows="10"
@@ -60,33 +62,37 @@
                             <f:validateLength for="synopsisInputText"
                                               maximum="400"/>
                         </h:inputTextarea>
-                        <h:message  styleClass="alert alert-warning" style="padding: 8px; !important;" for="synopsisInputText"/>
+                        <h:message id="synopsisMessage" styleClass="alert alert-warning"
+                                   style="padding: 8px; !important;"
+                                   for="synopsisInputText"/>
                     </h:panelGroup>
                     <br/><br/>
-                    <h:panelGroup  styleClass="form-group" >
-                        <h:outputText styleClass="text-info" value="Genre" />
+                    <h:panelGroup styleClass="form-group">
+                        <h:outputText styleClass="text-info" value="Genre"/>
                         <h:selectOneMenu styleClass="form-control"
                                          id="genreSelect"
                                          value="#{addMovieBean.movieController.movieDataInContext.genre}">
                             <f:selectItems value="#{addMovieBean.movieController.genres}"/>
                         </h:selectOneMenu>
-                        <h:message styleClass="alert alert-warning" style="padding: 8px; !important;" for="genreSelect"/>
+                        <h:message id="genreMessage" styleClass="alert alert-warning" style="padding: 8px; !important;"
+                                   for="genreSelect"/>
                     </h:panelGroup>
                     <br/><br/>
-                    <h:panelGroup  styleClass="form-group" >
-                        <h:outputText styleClass="text-info" value="Rating" />
-                        <h:selectOneMenu  styleClass="form-control"
-                                          id="ratingSelect"
-                                          value="#{addMovieBean.movieController.movieDataInContext.rating}">
+                    <h:panelGroup styleClass="form-group">
+                        <h:outputText styleClass="text-info" value="Rating"/>
+                        <h:selectOneMenu styleClass="form-control"
+                                         id="ratingSelect"
+                                         value="#{addMovieBean.movieController.movieDataInContext.rating}">
                             <f:selectItems value="#{addMovieBean.movieController.ratingsMap}"/>
                         </h:selectOneMenu>
 
-                        <h:message styleClass="alert alert-warning" style="padding: 8px; !important;" for="ratingSelect"/>
+                        <h:message id="ratingMessage" styleClass="alert alert-warning" style="padding: 8px; !important;"
+                                   for="ratingSelect"/>
                     </h:panelGroup>
                     <br/>
                     <br/>
                     <h:panelGroup styleClass="form-group">
-                        <h:outputText  styleClass="text-info" value="Thumbnail Link" />
+                        <h:outputText styleClass="text-info" value="Thumbnail Link"/>
                         <h:inputText styleClass="form-control"
                                      id="thumbnailLinkInputText"
                                      value="#{addMovieBean.movieController.movieDataInContext.thumbnailLink}"
@@ -95,10 +101,16 @@
                             <f:validateLength for="thumbnailLinkInputText"
                                               maximum="1000"/>
                         </h:inputText>
-                        <h:message styleClass="alert alert-warning" style="padding: 8px; !important;" for="thumbnailLinkInputText"/>
+                        <h:message id="thumbnailLinkMessage" styleClass="alert alert-warning"
+                                   style="padding: 8px; !important;"
+                                   for="thumbnailLinkInputText"/>
                     </h:panelGroup>
                     <br/><br/>
-                    <h:commandButton  styleClass="btn btn-info btn-md" value="Save" id="addMovieButton" action="#{addMovieBean.movieController.saveAction}"/>
+                    <h:commandButton styleClass="btn btn-info btn-md" value="Save" id="addMovieButton"
+                                     action="#{addMovieBean.movieController.saveAction}">
+                        <f:ajax execute="titleInputText dateInputText synopsisInputText genreSelect ratingSelect thumbnailLinkInputText"
+                                render="titleMessage dateMessage synopsisMessage genreMessage ratingMessage thumbnailLinkMessage"/>
+                    </h:commandButton>
                     <h:message styleClass="alert alert-warning" style="padding: 8px; !important;" for="addMovieButton"/>
                 </h:form>
             </h:panelGroup>
