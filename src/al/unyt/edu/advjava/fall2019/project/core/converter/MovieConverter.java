@@ -32,7 +32,7 @@ public class MovieConverter {
 
     public static MovieData toDataForREST(Movie movie) {
         Set<DirectorData> directorDataSet = DirectorConverter.toDataSet(movie.getDirectors());
-
+        Set<RatingData> ratingDataSet = RatingConverter.toDataSet(movie.getRatings());
         return new MovieData.Builder(movie.getId(), movie.getTitle())
                 .setReleaseDate(movie.getReleaseDate())
                 .setSynopsis(movie.getSynopsis())
@@ -40,6 +40,7 @@ public class MovieConverter {
                 .setRating(movie.getRating())
                 .setDirectors(directorDataSet)
                 .setAverageRating(movie.calculateAndGetAvgRating())
+                .setRatingData(ratingDataSet)
                 .build();
     }
 
@@ -97,7 +98,7 @@ public class MovieConverter {
         if (movie == null)
             return null;
         Set<DirectorData> directorDataSet = DirectorConverter.toDataSet(movie.getDirectors());
-        Set<RatingData> ratingDataList = RatingConverter.toDataSet(movie.getRatings());
+        Set<RatingData> ratingDataSet = RatingConverter.toDataSet(movie.getRatings());
         return new MovieData.Builder(movie.getId(), movie.getTitle())
                 .setReleaseDate(movie.getReleaseDate())
                 .setSynopsis(movie.getSynopsis())
@@ -106,7 +107,7 @@ public class MovieConverter {
                 .setThumbnailLink(movie.getThumbnailLink())
                 .setAverageRating(movie.calculateAndGetAvgRating())
                 .setDirectors(directorDataSet)
-                .setRatingData(ratingDataList)
+                .setRatingData(ratingDataSet)
                 .build();
     }
 
