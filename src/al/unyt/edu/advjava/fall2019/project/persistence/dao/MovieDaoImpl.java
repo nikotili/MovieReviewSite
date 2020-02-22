@@ -13,7 +13,21 @@ final class MovieDaoImpl implements MovieDao {
 
     @Override
     public Map<Movie, Double> getMovieAvgRatings() throws PersistenceException {
-        return null;
+        Map<Movie, Double> map = new HashMap<>();
+        Collection<Movie> movies = getAll();
+        EntityManager entityManager = entityManagerSupplier.get();
+
+        movies
+                .forEach(
+                        movie -> {
+                            Double r = entityManager.createQuery("select avg(r.rating) from Rating r where r.movieId = ?1", Double.class)
+                                    .setParameter(1, movie.getId())
+                                    .getSingleResult();
+                            map.put(movie, r);
+                        }
+                );
+
+        return map;
     }
 
     @Override

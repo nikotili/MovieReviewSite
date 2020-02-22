@@ -199,4 +199,11 @@ public class MovieData {
     public void setThumbnailLink(String thumbnailLink) {
         this.thumbnailLink = thumbnailLink;
     }
+
+    public String getDirectorNameList() {
+        return directors
+                .toString()
+                .replace("[", "")
+                .replace("]", "");
+    }
 }
