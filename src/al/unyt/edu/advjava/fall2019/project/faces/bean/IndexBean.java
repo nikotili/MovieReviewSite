@@ -1,5 +1,6 @@
 package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
+import al.unyt.edu.advjava.fall2019.project.faces.controller.MovieController;
 import al.unyt.edu.advjava.fall2019.project.faces.manager.session.DefaultSessionManager;
 
 import javax.annotation.PostConstruct;

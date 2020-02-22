@@ -1,4 +1,4 @@
-package al.unyt.edu.advjava.fall2019.project.faces.bean;
+package al.unyt.edu.advjava.fall2019.project.faces;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
