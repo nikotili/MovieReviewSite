@@ -1,7 +1,7 @@
 package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
 import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController;
-import al.unyt.edu.advjava.fall2019.project.core.manager.session.DefaultSessionManager;
+import al.unyt.edu.advjava.fall2019.project.faces.manager.session.DefaultSessionManager;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 
 import javax.annotation.PostConstruct;

@@ -1,7 +1,7 @@
 package al.unyt.edu.advjava.fall2019.project.faces.method;
 
-import al.unyt.edu.advjava.fall2019.project.core.manager.session.DefaultSessionManager;
 import al.unyt.edu.advjava.fall2019.project.faces.bean.FacesUtil;
+import al.unyt.edu.advjava.fall2019.project.faces.manager.session.DefaultSessionManager;
 
 /**
  * Represents a method which can be called without checking for permission explicitly

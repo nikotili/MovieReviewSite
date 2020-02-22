@@ -1,4 +1,4 @@
-package al.unyt.edu.advjava.fall2019.project.core.manager.session;
+package al.unyt.edu.advjava.fall2019.project.faces.manager.session;
 
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 
