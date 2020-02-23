@@ -36,7 +36,7 @@ CREATE TABLE movies_directors_relations
     PRIMARY KEY (movie_id, director_id)
 );
 
-CREATE TABLE rating
+CREATE TABLE ratings
 (
     movie_goer_email VARCHAR(50)  NOT NULL,
     movie_id         INT          NOT NULL,
