@@ -1,7 +1,9 @@
-package al.unyt.edu.advjava.fall2019.project.faces.bean;
+package al.unyt.edu.advjava.fall2019.project.faces.controller;
 
 import al.unyt.edu.advjava.fall2019.project.core.controller.DefaultAppController;
 import al.unyt.edu.advjava.fall2019.project.core.converter.MovieConverter;
+import al.unyt.edu.advjava.fall2019.project.faces.FacesUtil;
+import al.unyt.edu.advjava.fall2019.project.faces.bean.MovieFilter;
 import al.unyt.edu.advjava.fall2019.project.faces.data.MovieData;
 import al.unyt.edu.advjava.fall2019.project.faces.manager.session.DefaultSessionManager;
 import al.unyt.edu.advjava.fall2019.project.faces.method.RequiresLoginMethod;

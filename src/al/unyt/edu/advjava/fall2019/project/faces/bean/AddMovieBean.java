@@ -1,5 +1,7 @@
 package al.unyt.edu.advjava.fall2019.project.faces.bean;
 
+import al.unyt.edu.advjava.fall2019.project.faces.FacesUtil;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
