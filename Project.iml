@@ -18,7 +18,7 @@
         <datasource-mapping>
           <factory-entry name="Entities" value="7f228024-5265-4482-8ab8-1fab0116c7ee" />
           <factory-entry name="demoPersistenceUnit" />
-          <factory-entry name="movieReview-PU" value="7f228024-5265-4482-8ab8-1fab0116c7ee" />
+          <factory-entry name="movieReview-PU" value="7c233bbc-9d04-4597-a8cd-0e6689f8715a" />
         </datasource-mapping>
         <naming-strategy-map>
           <unit-entry name="movieReview-PU" />
