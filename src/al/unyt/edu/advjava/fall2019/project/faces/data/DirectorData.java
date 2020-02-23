@@ -24,4 +24,13 @@ public class DirectorData {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
+    public String getFullName() {
+        return this.name + " " + this.surname;
+    }
+
+    @Override
+    public String toString() {
+        return getFullName();
+    }
 }

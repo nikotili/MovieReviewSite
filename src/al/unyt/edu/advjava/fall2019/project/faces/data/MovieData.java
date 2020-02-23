@@ -13,16 +13,16 @@ public class MovieData {
     private String genre;
     private String rating;
     private Set<DirectorData> directors;
-    private transient Set<RatingData> ratingData;
+    private Set<RatingData> ratingData;
     private double averageRating;
-    private transient String thumbnailLink;
+    private String thumbnailLink;
 
     public Integer getId() {
         return id;
     }
 
     public static class Builder {
-        private Integer id = -100;
+        private Integer id;
         private String title;
         private Date releaseDate = null;
         private String synopsis = "";
@@ -198,5 +198,12 @@ public class MovieData {
 
     public void setThumbnailLink(String thumbnailLink) {
         this.thumbnailLink = thumbnailLink;
+    }
+
+    public String getDirectorNameList() {
+        return directors
+                .toString()
+                .replace("[", "")
+                .replace("]", "");
     }
 }

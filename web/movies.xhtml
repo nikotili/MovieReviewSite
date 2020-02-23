@@ -25,6 +25,9 @@
                         <h4 class="display-7">Title:
                             <h:outputText value="#{movieInfoBean.movieController.movieDataInContext.title}"/>
                         </h4>
+                        <h4 class="display-7">Director(s):
+                            <h:outputText value="#{movieInfoBean.movieController.movieDataInContext.directorNameList}"/>
+                        </h4>
                         <h4 class="display-7">Score:
                             <h:outputText value="#{movieInfoBean.movieController.movieDataInContext.averageRating}">
                                 <f:convertNumber pattern="#0.0"/>

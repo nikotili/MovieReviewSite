@@ -3,7 +3,7 @@ package al.unyt.edu.advjava.fall2019.project.faces.data;
 public class RatingData {
 
     private MovieGoerData movieGoerData;
-    private MovieData movieData;
+    private transient MovieData movieData;
     private String comment;
     private int rating;
 
