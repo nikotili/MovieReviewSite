@@ -23,6 +23,7 @@ public interface ModelDao<Entity, PK> {
         catch (Exception e) {
             if (entityManager.getTransaction().isActive())
                 entityManager.getTransaction().rollback();
+            throw e;
         }
         finally {
             if (entityManager.isOpen())

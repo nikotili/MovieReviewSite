@@ -15,6 +15,7 @@ public class RegisterBean {
     private String surname;
     private String email;
     private String password;
+    private boolean duplicateEmailProvided;
 
     @PostConstruct
     public void init() {
@@ -61,11 +62,21 @@ public class RegisterBean {
         movieGoer.setEmail(email);
         movieGoer.setPassword(password);
         try {
+            setDuplicateEmailProvided(false);
             DefaultAppController.getInstance().registerMovieGoer(movieGoer);
             FacesUtil.redirect(FacesUtil.LOGIN_URI);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
+            setDuplicateEmailProvided(true);
         }
+    }
+
+    public boolean isDuplicateEmailProvided() {
+        return duplicateEmailProvided;
+    }
+
+    public void setDuplicateEmailProvided(boolean duplicateEmailProvided) {
+        this.duplicateEmailProvided = duplicateEmailProvided;
     }
 }

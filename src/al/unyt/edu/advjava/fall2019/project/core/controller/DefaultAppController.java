@@ -5,6 +5,8 @@ import al.unyt.edu.advjava.fall2019.project.persistence.dao.DaoFactory;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Movie;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.MovieGoer;
 import al.unyt.edu.advjava.fall2019.project.persistence.model.Rating;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+import org.eclipse.persistence.exceptions.DatabaseException;
 
 import javax.persistence.PersistenceException;
 import java.util.Collection;
@@ -31,7 +33,7 @@ public final class DefaultAppController implements AppController {
     }
 
     @Override
-    public void registerMovieGoer(MovieGoer movieGoer) throws PersistenceException {
+    public void registerMovieGoer(MovieGoer movieGoer) throws PersistenceException, DatabaseException {
         DaoFactory.getMovieGoerDao().persist(movieGoer);
     }
 
