@@ -35,7 +35,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.50" level="application_server_libraries" />
     <orderEntry type="library" name="Mojarra-2.4.0" level="project" />
     <orderEntry type="library" name="eclipselink" level="project" />
     <orderEntry type="library" name="com.mysql.jdbc_5.1.5" level="project" />
