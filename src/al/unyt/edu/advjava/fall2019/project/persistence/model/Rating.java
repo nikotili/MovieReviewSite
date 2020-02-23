@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "ratings", schema = "movie_review")
+@Table(name = "rating", schema = "movie_review")
 @IdClass(RatingsPK.class)
 @NamedQueries({
         @NamedQuery(name = "Rating.deleteRatingsByMovieID", query = "DELETE FROM Rating r WHERE r.movieId = :movieId"),
