@@ -39,5 +39,7 @@
     <orderEntry type="library" name="eclipselink" level="project" />
     <orderEntry type="library" name="com.mysql.jdbc_5.1.5" level="project" />
     <orderEntry type="library" name="JPA 2.0-JPA 2.0" level="project" />
+    <orderEntry type="library" name="javax.faces-2.4.0" level="project" />
+    <orderEntry type="library" name="GlassFish 5.0.0" level="application_server_libraries" />
   </component>
 </module>
