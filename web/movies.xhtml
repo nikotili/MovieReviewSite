@@ -46,34 +46,38 @@
                     </div>
                 </div>
 
-                <h:panelGroup styleClass="form-group">
-                    <h:panelGrid columns="2" style="width: 100%;">
-                        <h:form>
-                            <h:commandLink styleClass="form-control btn btn-md btn-primary" value="Add Rating"
-                                           action="#{movieInfoBean.movieController.reviewMovieMethod.call(movieController.movieDataInContext.id)}"> </h:commandLink>
-                            <h:commandLink styleClass="form-control btn btn-md btn-primary" value="Update Movie"
-                                           action="#{movieInfoBean.movieController.editMovieMethod.call(movieController.movieDataInContext.id)}"> </h:commandLink>
-                            <h:commandLink styleClass="form-control btn btn-md btn-danger" value="Delete Movie"
-                                           action="#{movieInfoBean.movieController.deleteMovieMethod.call()}"> </h:commandLink>
-                        </h:form>
-                    </h:panelGrid>
-                </h:panelGroup>
+
             </div>
+            <h:panelGroup styleClass="form-group">
+                <h:form>
+                    <h:panelGrid columns="3" style="width: 100%;">
+                        <h:commandLink styleClass="form-control btn btn-md btn-primary" value="Add Rating"
+                                       action="#{movieInfoBean.movieController.reviewMovieMethod.call(movieController.movieDataInContext.id)}"> </h:commandLink>
+                        <h:commandLink styleClass="form-control btn btn-md btn-info" value="Update Movie"
+                                       action="#{movieInfoBean.movieController.editMovieMethod.call(movieController.movieDataInContext.id)}"> </h:commandLink>
+                        <h:commandLink styleClass="form-control btn btn-md btn-danger" value="Delete Movie"
+                                       action="#{movieInfoBean.movieController.deleteMovieMethod.call()}"> </h:commandLink>
+                    </h:panelGrid>
+                </h:form>
+
+            </h:panelGroup>
+            <br/>
+            <br/>
+            <h:dataTable class="table table-striped table-bordered order-table" value="#{movieInfoBean.movieController.movieDataInContext.ratingData}" var="rating">
+                <h:column>
+                    <f:facet name="header">Movie Goer</f:facet>
+                    #{rating.movieGoerData.fullName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Comment</f:facet>
+                    #{rating.comment}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Rating</f:facet>
+                    #{rating.rating}
+                </h:column>
+            </h:dataTable>
         </div>
     </div>
-    <h:dataTable class="table" value="#{movieInfoBean.movieController.movieDataInContext.ratingData}" var="rating">
-        <h:column>
-            <f:facet name="header">Movie Goer</f:facet>
-            #{rating.movieGoerData.fullName}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Comment</f:facet>
-            #{rating.comment}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Rating</f:facet>
-            #{rating.rating}
-        </h:column>
-    </h:dataTable>
 </h:body>
 </html>

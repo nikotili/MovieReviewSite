@@ -14,9 +14,9 @@
                 <h:commandLink style="font-size: 40px;" styleClass="col-md-9 text-left text-info pt-5"
                                value="Movie Reviews" action="index"/>
                 <h:commandLink rendered="#{controlPanelBean.logInPanelRendered}"
-                               styleClass="text-center btn-info form-control" value="Login" action="login"/>
+                               styleClass="text-center btn-default form-control" value="Register" action="register"/>
                 <h:commandLink rendered="#{controlPanelBean.logInPanelRendered}"
-                               styleClass="text-center btn-info form-control" value="Register" action="register"/>
+                               styleClass="text-center  btn-primary form-control" value="Login" action="login"/>
                 <h:outputText rendered="#{controlPanelBean.userPanelRendered}"
                               styleClass="text-center text-primary form-control"
                               value="User: #{controlPanelBean.userFullName}"/>
