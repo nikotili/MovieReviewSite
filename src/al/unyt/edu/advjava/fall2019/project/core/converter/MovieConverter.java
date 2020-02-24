@@ -51,10 +51,12 @@ public class MovieConverter {
     }
 
     private static MovieData toDataForIndex(Movie movie) {
+        Set<DirectorData> directorDataSet = DirectorConverter.toDataSet(movie.getDirectors());
         return new MovieData.Builder(movie.getId(), movie.getTitle())
                 .setGenre(movie.getGenre())
                 .setAverageRating(movie.calculateAndGetAvgRating())
                 .setThumbnailLink(movie.getThumbnailLink())
+                .setDirectors(directorDataSet)
                 .build();
     }
 
